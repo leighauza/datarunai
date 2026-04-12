@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DataRunAI — AI Tools for Philippine Business Owners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── TOKENS ─── */
+:root {
+  --blue-50:  #EFF6FF;
+  --blue-100: #DBEAFE;
+  --blue-200: #BFDBFE;
+  --blue-400: #60A5FA;
+  --blue-500: #3B82F6;
+  --blue-600: #2563EB;
+  --blue-700: #1D4ED8;
+  --ink:      #0C1630;
+  --ink-mid:  #3B4A6B;
+  --ink-soft: #6B7A99;
+  --white:    #FFFFFF;
+  --surface:  #F7FAFF;
+  --card-bg:  rgba(255,255,255,0.85);
+  --border:   rgba(59,130,246,0.12);
+  --border-white: rgba(255,255,255,0.6);
+  --font: 'Plus Jakarta Sans', sans-serif;
+  --radius-sm: 12px;
+  --radius:    20px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--surface);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── BACKGROUND ─── */
+.bg-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(147,197,253,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 90% 20%, rgba(191,219,254,0.3) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(96,165,250,0.15) 0%, transparent 70%),
+    #F0F6FF;
+  pointer-events: none;
+}
+
+.page { position: relative; z-index: 1; }
+
+/* ─── NAV ─── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  height: 68px;
+  background: rgba(240,246,255,0.75);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+  cursor: pointer;
+}
+.nav-logo span { color: var(--blue-600); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 7px 16px;
+  border-radius: 99px;
+  transition: all .2s;
+  cursor: pointer;
+}
+.nav-links a:hover { color: var(--ink); background: rgba(59,130,246,0.08); }
+.nav-links a.active { color: var(--blue-600); font-weight: 600; }
+
+.nav-cta {
+  background: var(--blue-600) !important;
+  color: #fff !important;
+  border-radius: 99px !important;
+  padding: 8px 20px !important;
+  font-weight: 600 !important;
+  transition: background .2s, transform .2s !important;
+}
+.nav-cta:hover { background: var(--blue-700) !important; transform: translateY(-1px); }
+.nav-cta.active { color: #fff !important; }
+
+/* ─── PAGE SECTIONS ─── */
+.view { display: none; }
+.view.active { display: block; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.view.active .anim-1 { animation: fadeUp .6s ease both; }
+.view.active .anim-2 { animation: fadeUp .7s .1s ease both; }
+.view.active .anim-3 { animation: fadeUp .7s .2s ease both; }
+.view.active .anim-4 { animation: fadeUp .7s .3s ease both; }
+.view.active .anim-5 { animation: fadeUp .8s .4s ease both; }
+
+/* ─── SHARED LAYOUT ─── */
+section { padding: 80px 60px; }
+.inner { max-width: 1100px; margin: 0 auto; }
+
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--blue-500);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 17px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-bottom: 56px;
+}
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .2s;
+}
+.btn-primary {
+  background: var(--blue-600);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(37,99,235,0.35);
+}
+.btn-primary:hover {
+  background: var(--blue-700);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,99,235,0.4);
+}
+.btn-outline {
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.btn-outline:hover {
+  border-color: rgba(59,130,246,0.3);
+  transform: translateY(-1px);
+}
+.btn-white {
+  background: white;
+  color: var(--blue-700);
+  font-weight: 700;
+}
+.btn-white:hover {
+  background: rgba(255,255,255,0.92);
+  transform: translateY(-2px);
+}
+.btn-ghost-white {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.25);
+  font-weight: 600;
+}
+.btn-ghost-white:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-1px);
+}
+
+/* ─── CTA BLOCK (shared) ─── */
+.cta-section { padding: 60px 60px 120px; text-align: center; }
+.cta-card {
+  max-width: 780px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, var(--blue-600), var(--blue-700));
+  border-radius: var(--radius-xl);
+  padding: 72px 60px;
+  box-shadow: 0 20px 60px rgba(37,99,235,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.cta-card::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
+  top: -100px; right: -100px;
+  border-radius: 50%;
+}
+.cta-title {
+  font-size: clamp(28px,4vw,44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: white;
+  margin-bottom: 16px;
+  position: relative;
+}
+.cta-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  position: relative;
+}
+.cta-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.5);
+}
+.footer-logo {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+}
+.footer-logo span { color: var(--blue-600); }
+.footer-copy { font-size: 13px; color: var(--ink-soft); }
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .15s;
+}
+.footer-links a:hover { color: var(--blue-600); }
+
+/* ══════════════════════════════════════════
+   HOME PAGE
+══════════════════════════════════════════ */
+.hero {
+  padding: 110px 60px 80px;
+  max-width: 1160px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 99px;
+  padding: 6px 16px;
+  margin-bottom: 32px;
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--blue-500);
+  animation: blink 2s infinite;
+}
+@keyframes blink {
+  0%,100% { opacity:1; transform: scale(1); }
+  50% { opacity:.4; transform: scale(1.5); }
+}
+.hero h1 {
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.hero h1 .highlight { color: var(--blue-600); }
+.hero-sub {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto 44px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 72px;
+}
+
+/* Hero visual */
+.hero-visual { position: relative; max-width: 860px; margin: 0 auto; }
+.hero-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--border-white);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 8px 48px rgba(59,130,246,0.12), 0 1px 3px rgba(0,0,0,0.06);
+}
+.hero-card-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.metric-box {
+  background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(147,197,253,0.1));
+  border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  text-align: left;
+}
+.metric-label { font-size: 12px; font-weight: 500; color: var(--ink-soft); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .05em; }
+.metric-value { font-size: 28px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; }
+.metric-sub { font-size: 12px; color: var(--blue-500); font-weight: 600; margin-top: 4px; }
+.chat-preview {
+  background: white;
+  border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  text-align: left;
+  grid-column: span 2;
+}
+.chat-header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+.chat-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-400), var(--blue-600));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 14px;
+}
+.chat-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.chat-status { font-size: 11px; color: #22C55E; font-weight: 500; }
+.chat-bubble {
+  font-size: 13px; line-height: 1.5;
+  padding: 10px 14px; border-radius: 12px; margin-bottom: 8px; max-width: 90%;
+}
+.bubble-bot { background: rgba(59,130,246,0.08); color: var(--ink-mid); border-radius: 4px 12px 12px 12px; }
+.bubble-user { background: var(--blue-600); color: white; margin-left: auto; border-radius: 12px 4px 12px 12px; }
+
+/* Why grid */
+#why { background: transparent; }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.why-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-white);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition: transform .2s, box-shadow .2s;
+}
+.why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(59,130,246,0.12); }
+.why-icon {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, var(--blue-100), var(--blue-200));
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 20px;
+}
+.why-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.02em; }
+.why-body { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+
+/* Products preview (home) */
+#home-products {
+  background: linear-gradient(180deg, transparent, rgba(219,234,254,0.3) 30%, rgba(219,234,254,0.15) 70%, transparent);
+}
+.products-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.product-card {
+  background: var(--white);
+  border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  display: flex; flex-direction: column;
+  transition: transform .2s, box-shadow .2s;
+  position: relative; overflow: hidden;
+}
+.product-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: linear-gradient(90deg, var(--blue-400), var(--blue-600));
+  opacity: 0; transition: opacity .2s;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(59,130,246,0.14); }
+.product-card:hover::before { opacity: 1; }
+.product-card.featured {
+  background: linear-gradient(145deg, var(--blue-600), var(--blue-700));
+  border-color: transparent; color: white;
+}
+.product-card.featured::before { background: rgba(255,255,255,0.3); opacity: 1; }
+.product-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--blue-500); background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.15);
+  border-radius: 99px; padding: 4px 12px;
+  display: inline-block; margin-bottom: 20px; width: fit-content;
+}
+.product-card.featured .product-tag { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
+.product-name { font-size: 26px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 10px; color: var(--ink); }
+.product-card.featured .product-name { color: white; }
+.product-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 28px; flex: 1; }
+.product-card.featured .product-desc { color: rgba(255,255,255,0.7); }
+.product-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.product-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
+.product-card.featured .product-features li { color: rgba(255,255,255,0.75); }
+.check {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(59,130,246,0.1); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px; font-size: 10px; color: var(--blue-600);
+}
+.product-card.featured .check { background: rgba(255,255,255,0.15); color: white; }
+.product-price {
+  font-size: 13px; font-weight: 500; color: var(--ink-soft);
+  margin-bottom: 18px; padding-top: 20px;
+  border-top: 1px solid rgba(59,130,246,0.08);
+}
+.product-card.featured .product-price { border-top-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+.product-price strong { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+.product-card.featured .product-price strong { color: white; }
+.btn-card {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 13px 20px; border-radius: 99px; border: none; cursor: pointer;
+  text-decoration: none; transition: all .2s;
+  background: rgba(59,130,246,0.08); color: var(--blue-600);
+  border: 1px solid rgba(59,130,246,0.15);
+}
+.btn-card:hover { background: var(--blue-600); color: white; border-color: transparent; }
+.product-card.featured .btn-card { background: white; color: var(--blue-700); border-color: transparent; }
+.product-card.featured .btn-card:hover { background: rgba(255,255,255,0.9); }
+
+/* Quote */
+.quote-section { padding: 80px 60px; text-align: center; }
+.quote-card {
+  max-width: 700px; margin: 0 auto;
+  background: var(--white);
+  border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-xl);
+  padding: 56px;
+  box-shadow: 0 4px 40px rgba(59,130,246,0.08);
+}
+.quote-mark { font-size: 80px; line-height: .8; color: var(--blue-200); font-weight: 800; margin-bottom: 20px; }
+.quote-text { font-size: 20px; font-weight: 500; line-height: 1.65; color: var(--ink); margin-bottom: 28px; letter-spacing: -0.01em; }
+.quote-author { font-size: 13px; font-weight: 600; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .07em; }
+
+/* ══════════════════════════════════════════
+   PORTFOLIO PAGE
+══════════════════════════════════════════ */
+.page-hero {
+  padding: 90px 60px 70px;
+  max-width: 1160px;
+  margin: 0 auto;
+  text-align: center;
+}
+.page-hero .hero-badge { margin-bottom: 28px; }
+.page-hero h1 {
+  font-size: clamp(38px, 5vw, 60px);
+  font-weight: 800; letter-spacing: -0.035em; line-height: 1.08;
+  color: var(--ink); margin-bottom: 20px;
+}
+.page-hero h1 .highlight { color: var(--blue-600); }
+.page-hero p { font-size: 18px; color: var(--ink-mid); line-height: 1.7; max-width: 580px; margin: 0 auto; }
+
+/* Product detail sections */
+#tools { background: transparent; padding-top: 20px; }
+.product-section {
+  background: var(--white);
+  border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-xl);
+  padding: 56px; margin-bottom: 28px;
+  position: relative; overflow: hidden;
+  transition: box-shadow .3s;
+}
+.product-section:hover { box-shadow: 0 16px 60px rgba(59,130,246,0.1); }
+.product-section.featured {
+  background: linear-gradient(145deg, var(--blue-600) 0%, var(--blue-700) 100%);
+  border-color: transparent;
+}
+.product-section::after {
+  content: ''; position: absolute; bottom: -60px; right: -60px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.06), transparent);
+  pointer-events: none;
+}
+.product-section.featured::after { background: radial-gradient(circle, rgba(255,255,255,0.07), transparent); }
+.product-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.ps-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--blue-500); background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.15);
+  border-radius: 99px; padding: 4px 14px; display: inline-block; margin-bottom: 18px;
+}
+.product-section.featured .ps-tag { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.9); }
+.ps-name { font-size: 40px; font-weight: 800; letter-spacing: -0.04em; color: var(--ink); margin-bottom: 6px; }
+.product-section.featured .ps-name { color: white; }
+.ps-tagline { font-size: 16px; font-weight: 600; color: var(--blue-500); margin-bottom: 24px; letter-spacing: -0.01em; }
+.product-section.featured .ps-tagline { color: rgba(255,255,255,0.75); }
+.ps-body { font-size: 15px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 12px; }
+.product-section.featured .ps-body { color: rgba(255,255,255,0.7); }
+.ps-best { font-size: 13px; color: var(--ink-soft); line-height: 1.6; margin-top: 20px; }
+.ps-best strong { color: var(--ink); font-weight: 700; }
+.product-section.featured .ps-best { color: rgba(255,255,255,0.6); }
+.product-section.featured .ps-best strong { color: rgba(255,255,255,0.9); }
+.features-box {
+  background: rgba(59,130,246,0.04);
+  border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius); padding: 28px; margin-bottom: 20px;
+}
+.product-section.featured .features-box { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.15); }
+.features-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-500); margin-bottom: 16px; }
+.product-section.featured .features-label { color: rgba(255,255,255,0.6); }
+.features-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.features-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--ink-mid); line-height: 1.5; }
+.product-section.featured .features-list li { color: rgba(255,255,255,0.8); }
+.fcheck {
+  width: 20px; height: 20px; flex-shrink: 0; border-radius: 50%;
+  background: rgba(59,130,246,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--blue-600); margin-top: 1px;
+}
+.product-section.featured .fcheck { background: rgba(255,255,255,0.2); color: white; }
+.pricing-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 20px 28px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+.product-section.featured .pricing-row { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.15); }
+.pricing-main { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; }
+.product-section.featured .pricing-main { color: white; }
+.pricing-note { font-size: 12px; color: var(--ink-soft); margin-top: 3px; }
+.product-section.featured .pricing-note { color: rgba(255,255,255,0.5); }
+.btn-product {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 12px 24px; border-radius: 99px; border: none; cursor: pointer;
+  text-decoration: none; transition: all .2s;
+  background: var(--blue-600); color: white; white-space: nowrap;
+}
+.btn-product:hover { background: var(--blue-700); transform: translateY(-1px); }
+.product-section.featured .btn-product { background: white; color: var(--blue-700); }
+.product-section.featured .btn-product:hover { background: rgba(255,255,255,0.9); }
+
+/* Portfolio grid */
+#portfolio { background: linear-gradient(180deg, transparent, rgba(219,234,254,0.25) 30%, rgba(219,234,254,0.12) 70%, transparent); }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 8px; }
+.portfolio-card {
+  background: var(--white); border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-lg); padding: 32px;
+  transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden;
+}
+.portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(59,130,246,0.12); }
+.portfolio-card.invite {
+  background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(59,130,246,0.08));
+  border: 1.5px dashed rgba(59,130,246,0.25);
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between;
+}
+.portfolio-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--blue-500); background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.12); border-radius: 99px;
+  padding: 4px 12px; display: inline-block; margin-bottom: 20px;
+}
+.portfolio-label.coming { color: var(--ink-soft); background: rgba(107,122,153,0.08); border-color: rgba(107,122,153,0.15); }
+.portfolio-client { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 6px; }
+.portfolio-industry { font-size: 13px; color: var(--ink-soft); font-weight: 500; margin-bottom: 20px; }
+.portfolio-product-used {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; color: var(--blue-600);
+  background: rgba(59,130,246,0.08); border-radius: 8px;
+  padding: 6px 12px; margin-bottom: 20px;
+}
+.placeholder-bar {
+  height: 12px; border-radius: 6px;
+  background: linear-gradient(90deg, rgba(59,130,246,0.08), rgba(59,130,246,0.14), rgba(59,130,246,0.08));
+  background-size: 200% 100%; animation: shimmer 2s infinite; margin-bottom: 8px;
+}
+.placeholder-bar.short { width: 60%; }
+.placeholder-bar.medium { width: 80%; }
+.placeholder-bar.full { width: 100%; }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.invite-icon {
+  width: 48px; height: 48px; background: rgba(59,130,246,0.1);
+  border-radius: var(--radius-sm); display: flex; align-items: center;
+  justify-content: center; font-size: 22px; margin-bottom: 16px;
+}
+.invite-title { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 10px; }
+.invite-body { font-size: 14px; color: var(--ink-mid); line-height: 1.65; margin-bottom: 24px; flex: 1; }
+.btn-invite {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 11px 22px; border-radius: 99px;
+  border: 1.5px solid rgba(59,130,246,0.25);
+  color: var(--blue-600); background: rgba(255,255,255,0.8);
+  text-decoration: none; transition: all .2s;
+}
+.btn-invite:hover { background: var(--blue-600); color: white; border-color: transparent; }
+.founding-banner {
+  background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(147,197,253,0.12));
+  border: 1px solid rgba(59,130,246,0.15); border-radius: var(--radius);
+  padding: 28px 36px; display: flex; align-items: center;
+  justify-content: space-between; gap: 24px; margin-top: 36px;
+}
+.founding-title { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 6px; }
+.founding-sub { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+
+/* ══════════════════════════════════════════
+   ABOUT PAGE
+══════════════════════════════════════════ */
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.story-body { font-size: 16px; color: var(--ink-mid); line-height: 1.8; margin-bottom: 20px; }
+.story-highlight {
+  background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(147,197,253,0.1));
+  border-left: 3px solid var(--blue-400);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 20px 24px; margin: 28px 0;
+  font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.6; letter-spacing: -0.01em;
+}
+.problem-solution-box {
+  background: var(--white);
+  border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-xl); padding: 40px;
+  display: flex; flex-direction: column; gap: 28px;
+}
+.ps-section-label { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-500); margin-bottom: 16px; }
+.ps-item {
+  display: flex; gap: 12px; align-items: flex-start; padding: 16px;
+  border-radius: var(--radius-sm); font-size: 14px; color: var(--ink-mid); line-height: 1.6;
+}
+.ps-item span:first-child { font-size: 16px; flex-shrink: 0; }
+.ps-item.problem { background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.1); }
+.ps-item.solution { background: rgba(34,197,94,0.04); border: 1px solid rgba(34,197,94,0.12); }
+
+#values { background: linear-gradient(180deg, transparent, rgba(219,234,254,0.25) 40%, rgba(219,234,254,0.12) 70%, transparent); }
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.value-card {
+  background: var(--white); border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-lg); padding: 36px 32px;
+  transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden;
+}
+.value-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: linear-gradient(90deg, var(--blue-400), var(--blue-600));
+  opacity: 0; transition: opacity .2s;
+}
+.value-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(59,130,246,0.12); }
+.value-card:hover::before { opacity: 1; }
+.value-number { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-400); margin-bottom: 16px; }
+.value-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 12px; }
+.value-body { font-size: 15px; color: var(--ink-mid); line-height: 1.7; }
+
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.team-intro { font-size: 16px; color: var(--ink-mid); line-height: 1.8; margin-bottom: 24px; }
+.founder-card {
+  background: var(--white); border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-lg); padding: 36px; display: flex; gap: 20px; align-items: flex-start;
+}
+.founder-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-400), var(--blue-600));
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 26px; color: white; font-weight: 800;
+}
+.founder-name { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 4px; }
+.founder-role { font-size: 13px; font-weight: 600; color: var(--blue-500); margin-bottom: 12px; letter-spacing: .02em; }
+.founder-bio { font-size: 14px; color: var(--ink-mid); line-height: 1.7; }
+.team-side { display: flex; flex-direction: column; gap: 16px; }
+.team-stat-card {
+  background: var(--card-bg); backdrop-filter: blur(16px);
+  border: 1px solid var(--border-white); border-radius: var(--radius);
+  padding: 24px 28px; display: flex; align-items: center; gap: 20px;
+}
+.stat-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--blue-100), var(--blue-200));
+  border-radius: var(--radius-sm); display: flex; align-items: center;
+  justify-content: center; font-size: 20px; flex-shrink: 0;
+}
+.stat-label { font-size: 13px; color: var(--ink-soft); font-weight: 500; margin-bottom: 4px; }
+.stat-value { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+.founding-invite {
+  background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(147,197,253,0.12));
+  border: 1px solid rgba(59,130,246,0.15); border-radius: var(--radius); padding: 24px 28px;
+}
+.founding-invite-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.founding-invite-body { font-size: 14px; color: var(--ink-mid); line-height: 1.65; margin-bottom: 16px; }
+.founding-invite a { font-size: 14px; font-weight: 700; color: var(--blue-600); text-decoration: none; }
+.founding-invite a:hover { text-decoration: underline; }
+
+/* ══════════════════════════════════════════
+   CONTACT PAGE
+══════════════════════════════════════════ */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: start; }
+.info-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-500); margin-bottom: 12px; }
+.info-block { margin-bottom: 40px; }
+.expect-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+.expect-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 15px; color: var(--ink-mid); line-height: 1.55; }
+.expect-icon {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--blue-100), var(--blue-200));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0; margin-top: 1px;
+}
+.who-for-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.who-for-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-mid); line-height: 1.5; }
+.who-for-list li::before { content: '→'; color: var(--blue-500); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.direct-contact {
+  background: var(--white); border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column; gap: 14px;
+}
+.direct-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+.contact-method { display: flex; align-items: center; gap: 14px; }
+.contact-method-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(59,130,246,0.08); display: flex; align-items: center;
+  justify-content: center; font-size: 16px; flex-shrink: 0;
+}
+.contact-method-type { font-size: 11px; font-weight: 600; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+.contact-method-value { font-size: 14px; font-weight: 600; color: var(--ink); }
+.contact-method-value a { color: var(--blue-600); text-decoration: none; transition: color .15s; }
+.contact-method-value a:hover { color: var(--blue-700); text-decoration: underline; }
+.reply-note { font-size: 12px; color: var(--ink-soft); padding-top: 8px; border-top: 1px solid var(--border); font-style: italic; }
+
+.booking-card {
+  background: var(--white); border: 1px solid rgba(59,130,246,0.12);
+  border-radius: var(--radius-xl); overflow: hidden;
+  box-shadow: 0 8px 40px rgba(59,130,246,0.08);
+}
+.booking-card-header {
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+  padding: 32px 36px; position: relative; overflow: hidden;
+}
+.booking-card-header::before {
+  content: ''; position: absolute; width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+  top: -60px; right: -60px; border-radius: 50%;
+}
+.booking-header-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 8px; position: relative; }
+.booking-header-title { font-size: 24px; font-weight: 800; color: white; letter-spacing: -0.03em; line-height: 1.2; position: relative; margin-bottom: 6px; }
+.booking-header-sub { font-size: 14px; color: rgba(255,255,255,0.65); position: relative; }
+.booking-card-body { padding: 36px; }
+.calendly-placeholder {
+  background: var(--surface); border: 2px dashed rgba(59,130,246,0.2);
+  border-radius: var(--radius-lg); padding: 48px 32px; text-align: center; margin-bottom: 28px;
+}
+.calendly-icon {
+  width: 56px; height: 56px; background: linear-gradient(135deg, var(--blue-100), var(--blue-200));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin: 0 auto 16px;
+}
+.calendly-title { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.calendly-sub { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 24px; max-width: 280px; margin-left: auto; margin-right: auto; }
+.btn-calendly {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font); font-size: 15px; font-weight: 700;
+  padding: 14px 32px; border-radius: 99px; border: none; cursor: pointer;
+  text-decoration: none; transition: all .2s;
+  background: var(--blue-600); color: white;
+  box-shadow: 0 4px 20px rgba(37,99,235,0.35);
+}
+.btn-calendly:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,99,235,0.4); }
+.booking-divider {
+  display: flex; align-items: center; gap: 12px; margin: 24px 0;
+  color: var(--ink-soft); font-size: 13px; font-weight: 500;
+}
+.booking-divider::before, .booking-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.contact-form { display: flex; flex-direction: column; gap: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+label { font-size: 13px; font-weight: 600; color: var(--ink); letter-spacing: .01em; }
+input, textarea, select {
+  font-family: var(--font); font-size: 14px; color: var(--ink);
+  background: var(--surface); border: 1.5px solid rgba(59,130,246,0.15);
+  border-radius: var(--radius-sm); padding: 12px 16px; outline: none;
+  transition: border-color .2s, box-shadow .2s; width: 100%; resize: none;
+}
+input::placeholder, textarea::placeholder { color: var(--ink-soft); }
+input:focus, textarea:focus, select:focus {
+  border-color: var(--blue-400); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); background: var(--white);
+}
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7A99' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 36px; cursor: pointer;
+}
+.btn-submit {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font); font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 99px; border: none; cursor: pointer;
+  text-decoration: none; transition: all .2s;
+  background: var(--blue-600); color: white;
+  box-shadow: 0 4px 20px rgba(37,99,235,0.3); width: 100%;
+}
+.btn-submit:hover { background: var(--blue-700); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(37,99,235,0.4); }
+.form-note { font-size: 12px; color: var(--ink-soft); text-align: center; line-height: 1.6; }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 72px 24px 60px; }
+  section { padding: 60px 24px; }
+  .page-hero { padding: 60px 24px 48px; }
+  .why-grid, .products-grid, .values-grid { grid-template-columns: 1fr; }
+  .hero-card-inner { grid-template-columns: 1fr; }
+  .chat-preview { grid-column: span 1; }
+  .cta-card { padding: 48px 28px; }
+  .cta-btns { flex-direction: column; }
+  .quote-section { padding: 60px 24px; }
+  .cta-section { padding: 60px 24px 80px; }
+  .product-layout { grid-template-columns: 1fr; gap: 36px; }
+  .product-section { padding: 36px 28px; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .founding-banner { flex-direction: column; text-align: center; }
+  .story-grid, .team-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 20px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-gradient"></div>
+<div class="page">
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">Data<span>Run</span>AI</a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" data-page="home">Home</a></li>
+    <li><a onclick="showPage('portfolio')" data-page="portfolio">Portfolio</a></li>
+    <li><a onclick="showPage('about')" data-page="about">About Us</a></li>
+    <li><a onclick="showPage('contact')" data-page="contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HOME
+══════════════════════════════════════════ -->
+<div id="page-home" class="view">
+
+  <!-- HERO -->
+  <section style="padding:0;">
+    <div class="hero">
+      <div class="hero-badge anim-1">
+        <span class="badge-dot"></span>
+        AI tools built for Filipino business owners
+      </div>
+      <h1 class="anim-2">Stop losing customers<br>to <span class="highlight">slow replies.</span></h1>
+      <p class="hero-sub anim-3">DataRunAI builds simple, powerful AI tools that work for your business 24/7 — no tech team needed, no complicated setup.</p>
+      <div class="hero-actions anim-4">
+        <a onclick="showPage('portfolio')" class="btn btn-primary">See Our Tools →</a>
+        <a onclick="showPage('contact')" class="btn btn-outline">Book a Free Call</a>
+      </div>
+      <div class="hero-visual anim-5">
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="metric-box">
+              <div class="metric-label">Leads captured</div>
+              <div class="metric-value">47</div>
+              <div class="metric-sub">↑ while you slept</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Replied instantly</div>
+              <div class="metric-value">100%</div>
+              <div class="metric-sub">↑ zero missed chats</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Proposals sent</div>
+              <div class="metric-value">12</div>
+              <div class="metric-sub">↑ in 30 seconds each</div>
+            </div>
+            <div class="chat-preview">
+              <div class="chat-header">
+                <div class="chat-avatar">🤖</div>
+                <div>
+                  <div class="chat-name">BrightSmile Assistant</div>
+                  <div class="chat-status">● Always online</div>
+                </div>
+              </div>
+              <div class="chat-bubble bubble-bot">Hi! Welcome to BrightSmile Dental. How can I help you today?</div>
+              <div class="chat-bubble bubble-user">Magkano po ang cleaning?</div>
+              <div class="chat-bubble bubble-bot">A regular cleaning starts at ₱800. Would you like to book an appointment? 😊</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="inner">
+      <div class="section-eyebrow">Why DataRunAI</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:56px;">
+        <div><div class="section-title">Built for businesses that can't afford to miss a lead.</div></div>
+        <div class="section-sub" style="margin-bottom:0;">Not a global SaaS tool you have to figure out yourself. We set it up, we support it, and we make sure it works for your specific business.</div>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🌙</div>
+          <div class="why-title">Always On</div>
+          <div class="why-body">Your business answers questions, captures leads, and books appointments — even at 2am on a Sunday when you're asleep.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🇵🇭</div>
+          <div class="why-title">Built for Philippine SMEs</div>
+          <div class="why-body">Understands Filipino, Taglish, and English. Designed for clinics, agencies, contractors, and service businesses across the Philippines.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">⚡</div>
+          <div class="why-title">Done For You</div>
+          <div class="why-body">We handle the entire setup. You don't touch code. You just watch it work — and keep running your business.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS PREVIEW -->
+  <section id="home-products">
+    <div class="inner">
+      <div class="section-eyebrow">Our Products</div>
+      <div class="section-title">Three tools. One goal.</div>
+      <div class="section-sub">More revenue, less manual work. Each tool solves a specific problem — and they're all set up entirely by us.</div>
+      <div class="products-grid">
+        <div class="product-card featured">
+          <div class="product-tag">⭐ Most Popular</div>
+          <div class="product-name">SiteBot</div>
+          <div class="product-desc">An AI chatbot that lives on your website and answers customer questions instantly, 24/7.</div>
+          <ul class="product-features">
+            <li><span class="check">✓</span> Answers FAQs automatically, day and night</li>
+            <li><span class="check">✓</span> Captures lead info and sends it to you</li>
+            <li><span class="check">✓</span> Works in Filipino, Taglish, or English</li>
+            <li><span class="check">✓</span> Installs on any website in minutes</li>
+          </ul>
+          <div class="product-price">Setup fee + <strong>₱1,500</strong>/month</div>
+          <a onclick="showPage('contact')" class="btn-card">Get SiteBot →</a>
+        </div>
+        <div class="product-card">
+          <div class="product-tag">Self-Serve SaaS</div>
+          <div class="product-name">ProposalAI</div>
+          <div class="product-desc">Fill a form, get a polished professional proposal in 30 seconds.</div>
+          <ul class="product-features">
+            <li><span class="check">✓</span> Professional proposals in under a minute</li>
+            <li><span class="check">✓</span> Scope, deliverables, terms, pricing — all formatted</li>
+            <li><span class="check">✓</span> Works for any service-based business</li>
+            <li><span class="check">✓</span> No setup fee — use it right away</li>
+          </ul>
+          <div class="product-price"><strong>₱799</strong>/month · Cancel anytime</div>
+          <a onclick="showPage('contact')" class="btn-card">Try ProposalAI →</a>
+        </div>
+        <div class="product-card">
+          <div class="product-tag">Add-On Available</div>
+          <div class="product-name">BookingBot</div>
+          <div class="product-desc">Handles the booking conversation for you — collects name, date, service, and sends you a summary.</div>
+          <ul class="product-features">
+            <li><span class="check">✓</span> Handles scheduling conversations automatically</li>
+            <li><span class="check">✓</span> Sends you a summary for every booking</li>
+            <li><span class="check">✓</span> No calendar software needed</li>
+            <li><span class="check">✓</span> Works standalone or as a SiteBot add-on</li>
+          </ul>
+          <div class="product-price">Setup fee + <strong>₱500</strong>/month</div>
+          <a onclick="showPage('contact')" class="btn-card">Get BookingBot →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="quote-section">
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">We went from missing inquiries every night to waking up with booked appointments. It just works.</div>
+      <div class="quote-author">Dental clinic owner · Pasig City</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-card">
+      <div class="cta-title">Ready to put AI to work for your business?</div>
+      <div class="cta-sub">No pressure, no pitch. Just a free 30-minute call to understand your business and show you exactly what's possible.</div>
+      <div class="cta-btns">
+        <a onclick="showPage('contact')" class="btn btn-white">Book a Free Call →</a>
+        <a href="mailto:hello@datarunai.com" class="btn btn-ghost-white">Email Us Instead</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-home -->
+
+
+<!-- ══════════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════════ -->
+<div id="page-portfolio" class="view">
+
+  <section style="padding:0;">
+    <div class="page-hero">
+      <div class="hero-badge anim-1">Our Tools &amp; Work</div>
+      <h1 class="anim-2">Three tools. One goal —<br><span class="highlight">more revenue, less manual work.</span></h1>
+      <p class="anim-3">Each tool is built to solve a specific problem Filipino business owners face every day. Affordable, done-for-you, and ready to run in days — not months.</p>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools">
+    <div class="inner">
+
+      <!-- SiteBot -->
+      <div class="product-section featured">
+        <div class="product-layout">
+          <div>
+            <div class="ps-tag">⭐ Most Popular</div>
+            <div class="ps-name">SiteBot</div>
+            <div class="ps-tagline">AI chatbot for your website</div>
+            <p class="ps-body">Your website visitors have questions. Right now, most of them leave without an answer — and go to your competitor instead.</p>
+            <p class="ps-body">SiteBot is an AI-powered chat widget that lives on your website and answers customer questions instantly, 24/7. You give us your business info — services, pricing, hours, FAQs — and we handle the rest.</p>
+            <p class="ps-best"><strong>Best for:</strong> Clinics, law offices, real estate brokers, salons, repair shops, and any business with a website.</p>
+          </div>
+          <div>
+            <div class="features-box">
+              <div class="features-label">What it does</div>
+              <ul class="features-list">
+                <li><span class="fcheck">✓</span> Answers common customer questions automatically</li>
+                <li><span class="fcheck">✓</span> Captures lead info and sends it to you</li>
+                <li><span class="fcheck">✓</span> Works on any website — no platform restrictions</li>
+                <li><span class="fcheck">✓</span> Responds in Filipino, Taglish, or English</li>
+              </ul>
+            </div>
+            <div class="pricing-row">
+              <div>
+                <div class="pricing-main">₱15,000 setup · ₱1,500/mo</div>
+                <div class="pricing-note">Full setup done by us. Cancel anytime after first 3 months.</div>
+              </div>
+              <a onclick="showPage('contact')" class="btn-product">Get SiteBot →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ProposalAI -->
+      <div class="product-section">
+        <div class="product-layout">
+          <div>
+            <div class="ps-tag">Self-Serve SaaS</div>
+            <div class="ps-name">ProposalAI</div>
+            <div class="ps-tagline">Professional proposals in 30 seconds</div>
+            <p class="ps-body">Writing proposals takes hours. Chasing clients for a decision takes days. ProposalAI cuts the time it takes to go from conversation to signed deal.</p>
+            <p class="ps-body">Fill in a short form — client name, project scope, timeline, price — and get a polished, professional proposal ready to send in under a minute.</p>
+            <p class="ps-best"><strong>Best for:</strong> Freelancers, marketing agencies, contractors, consultants, event suppliers, and any business that sends quotes or proposals.</p>
+          </div>
+          <div>
+            <div class="features-box">
+              <div class="features-label">What it does</div>
+              <ul class="features-list">
+                <li><span class="fcheck">✓</span> Generates branded, professional proposals instantly</li>
+                <li><span class="fcheck">✓</span> Formats scope, deliverables, terms, and pricing clearly</li>
+                <li><span class="fcheck">✓</span> Works for any service-based business</li>
+                <li><span class="fcheck">✓</span> Self-serve — no setup needed, use it anytime</li>
+              </ul>
+            </div>
+            <div class="pricing-row">
+              <div>
+                <div class="pricing-main">₱799/month</div>
+                <div class="pricing-note">No setup fee. No contract. Cancel anytime.</div>
+              </div>
+              <a onclick="showPage('contact')" class="btn-product">Try ProposalAI →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BookingBot -->
+      <div class="product-section">
+        <div class="product-layout">
+          <div>
+            <div class="ps-tag">Add-On Available</div>
+            <div class="ps-name">BookingBot</div>
+            <div class="ps-tagline">Let clients book themselves</div>
+            <p class="ps-body">Stop going back and forth over schedules. BookingBot is an AI-powered booking assistant that collects your client's name, preferred date, service, and contact info — automatically — and sends it straight to you.</p>
+            <p class="ps-body">No calendar software to connect. No complicated setup. Just a smart assistant that handles the scheduling conversation for you.</p>
+            <p class="ps-best"><strong>Best for:</strong> Clinics, tutors, salons, repair shops, coaches, and any business that runs on appointments.</p>
+          </div>
+          <div>
+            <div class="features-box">
+              <div class="features-label">What it does</div>
+              <ul class="features-list">
+                <li><span class="fcheck">✓</span> Handles appointment booking conversations automatically</li>
+                <li><span class="fcheck">✓</span> Collects all the info you need before confirming</li>
+                <li><span class="fcheck">✓</span> Sends you a clean summary for every booking request</li>
+                <li><span class="fcheck">✓</span> Works standalone or as an add-on to SiteBot</li>
+              </ul>
+            </div>
+            <div class="pricing-row">
+              <div>
+                <div class="pricing-main">₱8,000 setup · ₱500/mo</div>
+                <div class="pricing-note">Or add to an existing SiteBot for just ₱5,000.</div>
+              </div>
+              <a onclick="showPage('contact')" class="btn-product">Get BookingBot →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="inner">
+      <div class="section-eyebrow">Our Work</div>
+      <div class="section-title">Real businesses. Real results.</div>
+      <div class="section-sub">We're in our early days — and actively working with our first clients. Case studies and results will live here as we grow.</div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <div class="portfolio-label coming">In Progress</div>
+          <div class="portfolio-client">BrightSmile Dental</div>
+          <div class="portfolio-industry">Dental Clinic · Pasig City</div>
+          <div class="portfolio-product-used">🤖 SiteBot</div>
+          <div>
+            <div class="placeholder-bar full"></div>
+            <div class="placeholder-bar medium"></div>
+            <div class="placeholder-bar short"></div>
+            <p style="font-size:12px;color:var(--ink-soft);margin-top:14px;font-style:italic;">Full case study coming soon.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-label coming">In Progress</div>
+          <div class="portfolio-client">A Manila Freelancer</div>
+          <div class="portfolio-industry">Marketing &amp; Design · Manila</div>
+          <div class="portfolio-product-used">📄 ProposalAI</div>
+          <div>
+            <div class="placeholder-bar full"></div>
+            <div class="placeholder-bar medium"></div>
+            <div class="placeholder-bar short"></div>
+            <p style="font-size:12px;color:var(--ink-soft);margin-top:14px;font-style:italic;">Full case study coming soon.</p>
+          </div>
+        </div>
+        <div class="portfolio-card invite">
+          <div>
+            <div class="invite-icon">✦</div>
+            <div class="invite-title">Could be your business</div>
+            <p class="invite-body">We're taking on founding clients now. You'll get our best attention, priority support, and founding client pricing — and your results will be the first case study on this page.</p>
+          </div>
+          <a onclick="showPage('contact')" class="btn-invite">Book a Free Call →</a>
+        </div>
+      </div>
+      <div class="founding-banner">
+        <div>
+          <div class="founding-title">Founding client pricing is available now</div>
+          <div class="founding-sub">We're actively looking for our first 10 clients. Early clients get priority onboarding, direct access to the founder, and locked-in rates before prices increase.</div>
+        </div>
+        <a onclick="showPage('contact')" class="btn btn-primary" style="white-space:nowrap;">Book a Free Call →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="cta-card">
+      <div class="cta-title">Ready to put AI to work for your business?</div>
+      <div class="cta-sub">No pressure, no pitch. Just a free 30-minute call to understand your business and show you exactly what's possible.</div>
+      <div class="cta-btns">
+        <a onclick="showPage('contact')" class="btn btn-white">Book a Free Call →</a>
+        <a href="mailto:hello@datarunai.com" class="btn btn-ghost-white">Email Us Instead</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-portfolio -->
+
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<div id="page-about" class="view">
+
+  <section style="padding:0;">
+    <div class="page-hero">
+      <div class="hero-badge anim-1">Our Story</div>
+      <h1 class="anim-2">Small businesses deserve<br><span class="highlight">big-business technology.</span></h1>
+      <p class="anim-3">Most AI tools are built for companies with tech teams and big budgets. We built DataRunAI for everyone else.</p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section>
+    <div class="inner">
+      <div class="story-grid">
+        <div>
+          <div class="section-eyebrow">Why We Exist</div>
+          <div class="section-title">Built for the businesses that keep the Philippines running.</div>
+          <p class="story-body">Most AI tools are built for companies with tech teams, big budgets, and months to set things up. That's not most Philippine business owners.</p>
+          <p class="story-body">DataRunAI was built for the dentist in Pasig who's still manually replying to Facebook messages at 10pm. For the freelance designer who loses clients because their proposal took too long. For the contractor who misses bookings because nobody picked up the phone.</p>
+          <div class="story-highlight">"If it's too complicated to set up, it doesn't belong in your business. We handle the complicated part."</div>
+          <p class="story-body">We build AI tools that are simple to use, affordable to maintain, and set up entirely by us — so you can focus on running your business, not learning software.</p>
+        </div>
+        <div class="problem-solution-box">
+          <div>
+            <div class="ps-section-label">The problem we're solving</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="ps-item problem"><span>😞</span><span>A potential client messages at midnight. Nobody answers. They book with your competitor by morning.</span></div>
+              <div class="ps-item problem"><span>😞</span><span>You spend 2 hours writing a proposal. The client goes quiet. That time is gone forever.</span></div>
+              <div class="ps-item problem"><span>😞</span><span>Back-and-forth scheduling eats up your day before the actual work even starts.</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="ps-section-label">What we do about it</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="ps-item solution"><span>✅</span><span>SiteBot answers your website visitors 24/7 — even at midnight, even on weekends.</span></div>
+              <div class="ps-item solution"><span>✅</span><span>ProposalAI turns a 2-hour task into 30 seconds. Polished proposals, every time.</span></div>
+              <div class="ps-item solution"><span>✅</span><span>BookingBot handles appointment scheduling automatically — no back-and-forth needed.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section id="values">
+    <div class="inner">
+      <div class="section-eyebrow">What We Stand For</div>
+      <div class="section-title" style="margin-bottom:48px;">How we approach every client and every build.</div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-number">01</div>
+          <div class="value-title">Clarity over complexity</div>
+          <p class="value-body">If it's hard to understand, we make it simpler. We don't impress clients with jargon — we impress them with results they can see and explain to their team.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-number">02</div>
+          <div class="value-title">Results over features</div>
+          <p class="value-body">We don't care how impressive the tech sounds. We care if it makes you money, saves you time, or removes friction from your business. That's the only metric that matters.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-number">03</div>
+          <div class="value-title">Relationships over transactions</div>
+          <p class="value-body">We're not a faceless SaaS platform. When something breaks or you have a question, a real person responds. Every time. That's not a feature — that's how we operate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section>
+    <div class="inner">
+      <div class="team-grid">
+        <div>
+          <div class="section-eyebrow">Who's Behind This</div>
+          <div class="section-title">A small, scrappy team obsessed with making AI practical.</div>
+          <p class="team-intro">We build everything ourselves, support every client personally, and we're not done until it's working for your specific business — not just working in theory.</p>
+          <p class="team-intro">We're based in the Philippines and focused entirely on the Philippine market. We understand how local businesses operate, how customers communicate (Taglish included), and what it actually takes to make technology work in this context.</p>
+          <div class="founder-card">
+            <div class="founder-avatar">👤</div>
+            <div>
+              <div class="founder-name">Founder, DataRunAI</div>
+              <div class="founder-role">Builder · BGC, Philippines</div>
+              <p class="founder-bio"><em style="color:var(--ink-soft);font-style:italic;">Personal bio coming soon.</em></p>
+            </div>
+          </div>
+        </div>
+        <div class="team-side">
+          <div class="team-stat-card">
+            <div class="stat-icon">🇵🇭</div>
+            <div><div class="stat-label">Where we operate</div><div class="stat-value">Philippines-first</div></div>
+          </div>
+          <div class="team-stat-card">
+            <div class="stat-icon">⚡</div>
+            <div><div class="stat-label">Time to go live</div><div class="stat-value">Days, not months</div></div>
+          </div>
+          <div class="team-stat-card">
+            <div class="stat-icon">🤝</div>
+            <div><div class="stat-label">Support model</div><div class="stat-value">Real person, every time</div></div>
+          </div>
+          <div class="team-stat-card">
+            <div class="stat-icon">💬</div>
+            <div><div class="stat-label">Languages supported</div><div class="stat-value">Filipino, Taglish, English</div></div>
+          </div>
+          <div class="founding-invite">
+            <div class="founding-invite-title">Taking on founding clients now</div>
+            <p class="founding-invite-body">Early clients get direct access, priority support, and founding pricing that won't be available later.</p>
+            <a onclick="showPage('contact')">Book a free call →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="cta-card">
+      <div class="cta-title">Want to know if DataRunAI is right for your business?</div>
+      <div class="cta-sub">No pressure, no pitch. Just a free 30-minute call to understand your business and show you exactly what an AI tool could do for it.</div>
+      <div class="cta-btns">
+        <a onclick="showPage('contact')" class="btn btn-white">Book a Free 30-Minute Call →</a>
+        <a href="mailto:hello@datarunai.com" class="btn btn-ghost-white">Email Us Instead</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-about -->
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<div id="page-contact" class="view">
+
+  <section style="padding:0;">
+    <div class="page-hero">
+      <div class="hero-badge anim-1">Book a Free Call</div>
+      <h1 class="anim-2">Let's figure out if this<br>is <span class="highlight">right for you.</span></h1>
+      <p class="anim-3">No pressure, no pitch. Just a 30-minute conversation to understand your business and show you exactly what an AI tool could do for it.</p>
+    </div>
+  </section>
+
+  <section style="padding:20px 60px 100px;">
+    <div class="inner">
+      <div class="contact-grid">
+
+        <!-- Left -->
+        <div>
+          <div class="info-block">
+            <div class="info-eyebrow">What to expect</div>
+            <ul class="expect-list">
+              <li><div class="expect-icon">💬</div><span>We'll ask about your business — what you sell, how clients find you, where the bottlenecks are.</span></li>
+              <li><div class="expect-icon">🎯</div><span>We'll show you a live demo of the tool most relevant to your situation.</span></li>
+              <li><div class="expect-icon">✅</div><span>You'll leave knowing exactly what the next step looks like — and whether it makes sense.</span></li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <div class="info-eyebrow">Who this is for</div>
+            <ul class="who-for-list">
+              <li>Business owners tired of missing leads and inquiries</li>
+              <li>Freelancers and agencies writing proposals manually</li>
+              <li>Anyone who runs on appointments and hates the back-and-forth</li>
+              <li>People who feel they should be doing more with technology but don't know where to start</li>
+            </ul>
+          </div>
+          <div class="direct-contact">
+            <div class="direct-label">Or reach us directly</div>
+            <div class="contact-method">
+              <div class="contact-method-icon">✉️</div>
+              <div>
+                <div class="contact-method-type">Email</div>
+                <div class="contact-method-value"><a href="mailto:hello@datarunai.com">hello@datarunai.com</a></div>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-method-icon">📘</div>
+              <div>
+                <div class="contact-method-type">Facebook</div>
+                <div class="contact-method-value"><a href="https://facebook.com/datarunai" target="_blank">facebook.com/datarunai</a></div>
+              </div>
+            </div>
+            <div class="reply-note">We reply within 24 hours on business days.</div>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="booking-card">
+          <div class="booking-card-header">
+            <div class="booking-header-label">Free 30-Minute Call</div>
+            <div class="booking-header-title">Book a time that works for you</div>
+            <div class="booking-header-sub">Pick a slot and we'll confirm within a few hours.</div>
+          </div>
+          <div class="booking-card-body">
+            <div class="calendly-placeholder">
+              <div class="calendly-icon">📅</div>
+              <div class="calendly-title">Schedule your free call</div>
+              <p class="calendly-sub">Click below to pick a date and time. No signup required.</p>
+              <a href="https://calendly.com" target="_blank" class="btn-calendly">Book a Free Call →</a>
+            </div>
+            <div class="booking-divider">or send us a message</div>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Your name</label>
+                  <input type="text" id="name" name="name" placeholder="Maria Santos" required>
+                </div>
+                <div class="form-group">
+                  <label for="business">Business name</label>
+                  <input type="text" id="business" name="business" placeholder="Bright Smile Dental">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="maria@brightsmile.com" required>
+              </div>
+              <div class="form-group">
+                <label for="interest">What are you interested in?</label>
+                <select id="interest" name="interest">
+                  <option value="" disabled selected>Choose a product...</option>
+                  <option value="sitebot">SiteBot — AI chatbot for my website</option>
+                  <option value="proposalai">ProposalAI — Professional proposals</option>
+                  <option value="bookingbot">BookingBot — Automated booking</option>
+                  <option value="multiple">Multiple tools / not sure yet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Tell us about your business <span style="color:var(--ink-soft);font-weight:400;">(optional)</span></label>
+                <textarea id="message" name="message" rows="3" placeholder="What do you sell, how do clients find you, and where are the gaps?"></textarea>
+              </div>
+              <button type="submit" class="btn-submit">Send Message →</button>
+              <p class="form-note">We'll reply within 24 hours. No spam, no pitch — just a real conversation.</p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-contact -->
+
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <a class="footer-logo" onclick="showPage('home')">Data<span>Run</span>AI</a>
+  <span class="footer-copy">© 2026 DataRunAI. All rights reserved.</span>
+  <ul class="footer-links">
+    <li><a onclick="showPage('portfolio')">Portfolio</a></li>
+    <li><a onclick="showPage('about')">About Us</a></li>
+    <li><a onclick="showPage('contact')">Contact Us</a></li>
+  </ul>
+</footer>
+
+</div><!-- /page -->
+
+<script>
+  function showPage(id) {
+    // Hide all views
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    // Show target
+    document.getElementById('page-' + id).classList.add('active');
+    // Update nav active state
+    document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+      a.classList.toggle('active', a.dataset.page === id);
+    });
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Update browser URL without reload
+    history.pushState({ page: id }, '', '#' + id);
+  }
+
+  // Handle browser back/forward
+  window.addEventListener('popstate', (e) => {
+    const id = e.state?.page || location.hash.replace('#', '') || 'home';
+    showPage(id);
+  });
+
+  // On first load, check URL hash
+  (function init() {
+    const hash = location.hash.replace('#', '');
+    showPage(['home','portfolio','about','contact'].includes(hash) ? hash : 'home');
+  })();
+
+  // Contact form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✓ Message sent!';
+    btn.style.background = '#16a34a';
+    btn.style.boxShadow = '0 4px 20px rgba(22,163,74,0.3)';
+    btn.disabled = true;
+  }
+</script>
+
+</body>
+</html>
