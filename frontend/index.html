@@ -117,18 +117,31 @@ nav {
 .nav-demo:hover { background: linear-gradient(135deg, #6d28d9, #1d4ed8) !important; }
 
 /* ── DEMO PAGE ── */
-#page-demo { background: #f8faff; }
-.demo-gateway {
-  min-height: 100vh;
+#page-demo { background: #f8faff; position: relative; }
+
+/* Frosted overlay — sits on top of the bot content */
+.demo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 24px;
-  background: linear-gradient(160deg, #f0f4ff 0%, #faf5ff 100%);
+  padding: 100px 24px 40px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: opacity .5s ease;
 }
-.demo-gateway.hidden { display: none; }
-.demo-bots { display: none; }
-.demo-bots.visible { display: block; }
+.demo-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Bot content — always rendered, pointer-events locked until unlocked */
+.demo-content { pointer-events: none; user-select: none; }
+.demo-content.unlocked { pointer-events: all; user-select: auto; }
+
 .gateway-card {
   background: #fff;
   border-radius: 24px;
@@ -2201,12 +2214,12 @@ select {
 ══════════════════════════════════════════ -->
 <div id="page-demo" class="view">
 
-  <!-- GATEWAY -->
-  <div class="demo-gateway" id="demoGateway">
+  <!-- FROSTED OVERLAY — gateway floats on top -->
+  <div class="demo-overlay" id="demoOverlay">
     <div class="gateway-card">
       <div class="gateway-badge">✨ Live Demo</div>
       <div class="gateway-title">See the bots in action</div>
-      <p class="gateway-sub">Tell us a bit about yourself and we'll show you exactly what your customers would experience.</p>
+      <p class="gateway-sub">Two real AI bots — a beauty store and a Japanese restaurant. Enter your details to start chatting.</p>
       <form class="gateway-form" id="gatewayForm">
         <div>
           <label for="gwName">Your name</label>
@@ -2232,8 +2245,8 @@ select {
     </div>
   </div>
 
-  <!-- BOTS -->
-  <div class="demo-bots" id="demoBots">
+  <!-- BOT CONTENT — always rendered, visible behind the overlay -->
+  <div class="demo-content" id="demoContent">
 
     <div class="demo-welcome-bar" id="demoWelcome">
       Welcome! <span>You're viewing live demos of DataRunAI's Revenue Bot.</span>
@@ -2243,7 +2256,6 @@ select {
     <div class="demo-section">
       <div class="demo-row">
 
-        <!-- Brand brief -->
         <div>
           <div class="demo-brand-badge">🛍️ Online Store Demo</div>
           <div class="demo-brand-name">Bloom Beauty PH</div>
@@ -2256,8 +2268,7 @@ select {
           </div>
         </div>
 
-        <!-- Chatbot -->
-        <div class="demo-chatbox" id="storeChatbox">
+        <div class="demo-chatbox">
           <div class="demo-chat-header">
             <div class="demo-chat-avatar">🛍️</div>
             <div>
@@ -2287,7 +2298,6 @@ select {
     <div class="demo-section" style="background: linear-gradient(180deg, transparent, rgba(219,234,254,0.15) 50%, transparent);">
       <div class="demo-row flip">
 
-        <!-- Brand brief -->
         <div>
           <div class="demo-brand-badge">🍣 Restaurant Demo</div>
           <div class="demo-brand-name">Sakura Japanese Restaurant</div>
@@ -2300,8 +2310,7 @@ select {
           </div>
         </div>
 
-        <!-- Chatbot -->
-        <div class="demo-chatbox" id="restaurantChatbox">
+        <div class="demo-chatbox">
           <div class="demo-chat-header">
             <div class="demo-chat-avatar">🍣</div>
             <div>
@@ -2327,7 +2336,7 @@ select {
       </div>
     </div>
 
-  </div><!-- /demo-bots -->
+  </div><!-- /demo-content -->
 
 </div><!-- /page-demo -->
 
@@ -2410,7 +2419,7 @@ select {
     const business = document.getElementById('gwBusiness').value.trim();
     if (!name) return;
 
-    // Update welcome bar
+    // Update welcome bar with user's name
     document.getElementById('demoWelcome').innerHTML =
       `Welcome, <strong>${name}</strong>! <span>You're viewing live demos of DataRunAI's Revenue Bot.</span>`;
 
@@ -2425,9 +2434,11 @@ select {
       demoSessionId = data.session_id || null;
     } catch (_) { /* backend not live yet — demo still works */ }
 
-    // Show bots, hide gateway
-    document.getElementById('demoGateway').classList.add('hidden');
-    document.getElementById('demoBots').classList.add('visible');
+    // Fade out overlay, unlock bots
+    const overlay = document.getElementById('demoOverlay');
+    overlay.classList.add('fade-out');
+    overlay.addEventListener('transitionend', () => overlay.style.display = 'none', { once: true });
+    document.getElementById('demoContent').classList.add('unlocked');
 
     // Greet both bots
     demoGreet('store');
