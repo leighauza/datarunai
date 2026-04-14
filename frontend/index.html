@@ -939,7 +939,14 @@ footer {
   font-weight: 500;
 }
 
-.stats-btn-wrap { text-align: center; margin-top: 20px; }
+.stats-btn-wrap { text-align: center; margin-top: 32px; }
+.stats-btn-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 420px;
+  margin: 0 auto 16px;
+}
 
 @media (max-width: 900px) {
   .hero-visual-section { padding: 0 24px; }
@@ -1542,45 +1549,43 @@ select {
     </div>
   </section>
 
-  <!-- HERO VISUAL: floating chat card -->
+  <!-- HERO VISUAL + STATS -->
   <section class="hero-visual-section">
     <div class="hero-visual-wrap">
       <div class="hero-card">
-        <div class="chat-preview">
-          <div class="chat-header">
-            <div class="chat-avatar">🤖</div>
-            <div>
-              <div class="chat-name">Kain Na Assistant</div>
-              <div class="chat-status">● Always online</div>
-            </div>
+        <div class="hero-card-inner">
+          <div class="metric-box">
+            <div class="metric-label">Sales recovered</div>
+            <div class="metric-value">₱100k+</div>
+            <div class="metric-sub">↑ from missed chats</div>
           </div>
-          <div class="chat-bubble bubble-user">May available pa ba kayo ngayon? 2 pax lang kami</div>
-          <div class="chat-bubble bubble-bot">Meron pa po! Available kami hanggang 10pm. Gusto niyo bang mag-reserve? Just send your name and time. 😊</div>
-          <div class="chat-bubble bubble-user">Sige! 8pm, Santos</div>
-          <div class="chat-bubble bubble-bot">Confirmed po! Reservation para kay Santos, 2 pax, 8pm tonight. See you! 🍽️</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS SECTION -->
-  <section class="stats-section">
-    <div class="inner">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-value">₱100k+</div>
-          <div class="stat-label">Sales recovered from missed chats</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">&lt; 3s</div>
-          <div class="stat-label">Average response time</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">20+</div>
-          <div class="stat-label">Hours saved per week</div>
+          <div class="metric-box">
+            <div class="metric-label">Response time</div>
+            <div class="metric-value">&lt; 3s</div>
+            <div class="metric-sub">↑ faster than 95% of businesses</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Hours saved</div>
+            <div class="metric-value">20+</div>
+            <div class="metric-sub">↑ hrs/week, no manual replies</div>
+          </div>
+          <div class="chat-preview">
+            <div class="chat-header">
+              <div class="chat-avatar">🤖</div>
+              <div>
+                <div class="chat-name">Kain Na Assistant</div>
+                <div class="chat-status">● Always online</div>
+              </div>
+            </div>
+            <div class="chat-bubble bubble-user">May available pa ba kayo ngayon? 2 pax lang kami</div>
+            <div class="chat-bubble bubble-bot">Meron pa po! Available kami hanggang 10pm. Gusto niyo bang mag-reserve? Just send your name and time. 😊</div>
+            <div class="chat-bubble bubble-user">Sige! 8pm, Santos</div>
+            <div class="chat-bubble bubble-bot">Confirmed po! Reservation para kay Santos, 2 pax, 8pm tonight. See you! 🍽️</div>
+          </div>
         </div>
       </div>
       <div class="stats-btn-wrap">
+        <p class="stats-btn-desc">Every missed message is a missed sale. See how much your business could be losing — and how much an AI bot could recover.</p>
         <a onclick="showPage('products')" class="btn-stats">See Your Business Stats →</a>
       </div>
     </div>
