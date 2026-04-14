@@ -215,6 +215,28 @@ nav {
   font-weight: 600;
 }
 .demo-welcome-bar span { opacity: .8; font-weight: 400; }
+.demo-page-header {
+  background: linear-gradient(160deg, #f0f4ff 0%, #faf5ff 100%);
+  padding: 100px 60px 60px;
+  text-align: center;
+}
+.demo-page-header-inner { max-width: 640px; margin: 0 auto; }
+.demo-page-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 14px;
+  line-height: 1.15;
+}
+.demo-page-sub {
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+@media (max-width: 768px) {
+  .demo-page-header { padding: 80px 24px 40px; }
+}
 .demo-section {
   padding: 80px 24px;
   max-width: 1100px;
@@ -475,6 +497,45 @@ section { padding: 80px 60px; }
 .btn-outline:hover {
   border-color: rgba(59,130,246,0.3);
   transform: translateY(-1px);
+}
+.btn-live {
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.35);
+}
+.btn-live:hover {
+  opacity: .9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(124,58,237,0.4);
+}
+.live-banner {
+  background: linear-gradient(135deg, #1e1b4b 0%, #1e3a8a 100%);
+  padding: 48px 60px;
+}
+.live-banner-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.live-banner-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.live-banner-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.5;
+}
+.live-banner-btn { flex-shrink: 0; white-space: nowrap; }
+@media (max-width: 768px) {
+  .live-banner { padding: 40px 24px; }
+  .live-banner-inner { flex-direction: column; text-align: center; }
 }
 .btn-white {
   background: white;
@@ -821,7 +882,71 @@ footer {
 .carousel-dot.active { background: var(--blue-600); transform: scale(1.2); }
 
 /* ─── STATS BUTTON ─── */
+/* Hero visual section */
+.hero-visual-section {
+  padding: 0 60px 0;
+  background: transparent;
+}
+.hero-visual-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  transform: translateY(-32px);
+}
+.hero-visual-wrap .hero-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(37,99,235,.13), 0 4px 16px rgba(0,0,0,.06);
+  padding: 28px;
+  border: 1px solid rgba(219,234,254,.8);
+}
+.hero-visual-wrap .chat-preview {
+  grid-column: unset;
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Stats section */
+.stats-section {
+  padding: 48px 60px 64px;
+  background: linear-gradient(180deg, transparent, rgba(219,234,254,0.2) 40%, transparent);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  text-align: center;
+  margin-bottom: 36px;
+}
+.stat-item {
+  padding: 28px 20px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e8edf8;
+  box-shadow: 0 2px 12px rgba(37,99,235,.06);
+}
+.stat-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--blue-600);
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
 .stats-btn-wrap { text-align: center; margin-top: 20px; }
+
+@media (max-width: 900px) {
+  .hero-visual-section { padding: 0 24px; }
+  .hero-visual-wrap { transform: translateY(-20px); }
+  .stats-section { padding: 40px 24px 56px; }
+  .stats-grid { grid-template-columns: 1fr; gap: 16px; }
+}
 .btn-stats {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font); font-size: 14px; font-weight: 600;
@@ -1401,7 +1526,7 @@ select {
 ══════════════════════════════════════════ -->
 <div id="page-home" class="view">
 
-  <!-- HERO -->
+  <!-- HERO: text + CTAs -->
   <section style="padding:0;">
     <div class="hero">
       <div class="hero-badge anim-1">
@@ -1411,44 +1536,51 @@ select {
       <h1 class="anim-2">Stop losing customers<br>to <span class="highlight">slow replies.</span></h1>
       <p class="hero-sub anim-3">DataRunAI builds simple, powerful AI tools that work for your business 24/7 — no tech team needed, no complicated setup.</p>
       <div class="hero-actions anim-4">
-        <a onclick="showPage('products')" class="btn btn-primary">See Our Tools →</a>
+        <a onclick="showPage('demo')" class="btn btn-live">See It in Action →</a>
         <a onclick="showPage('contact')" class="btn btn-outline">Book a Free Call</a>
       </div>
-      <div class="hero-visual anim-5">
-        <div class="hero-card">
-          <div class="hero-card-inner">
-            <div class="metric-box">
-              <div class="metric-label">Sales recovered</div>
-              <div class="metric-value">₱100k+</div>
-              <div class="metric-sub">↑ from missed chats</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">Response time</div>
-              <div class="metric-value">&lt; 3s</div>
-              <div class="metric-sub">↑ faster than 95% of businesses</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">Hours saved</div>
-              <div class="metric-value">20+</div>
-              <div class="metric-sub">↑ hrs/week, no manual replies</div>
-            </div>
-            <div class="chat-preview">
-              <div class="chat-header">
-                <div class="chat-avatar">🤖</div>
-                <div>
-                  <div class="chat-name">Kain Na Assistant</div>
-                  <div class="chat-status">● Always online</div>
-                </div>
-              </div>
-              <div class="chat-bubble bubble-user">May available pa ba kayo ngayon? 2 pax lang kami</div>
-              <div class="chat-bubble bubble-bot">Meron pa po! Available kami hanggang 10pm. Gusto niyo bang mag-reserve? Just send your name and time. 😊</div>
-              <div class="chat-bubble bubble-user">Sige! 8pm, Santos</div>
-              <div class="chat-bubble bubble-bot">Confirmed po! Reservation para kay Santos, 2 pax, 8pm tonight. See you! 🍽️</div>
+    </div>
+  </section>
+
+  <!-- HERO VISUAL: floating chat card -->
+  <section class="hero-visual-section">
+    <div class="hero-visual-wrap">
+      <div class="hero-card">
+        <div class="chat-preview">
+          <div class="chat-header">
+            <div class="chat-avatar">🤖</div>
+            <div>
+              <div class="chat-name">Kain Na Assistant</div>
+              <div class="chat-status">● Always online</div>
             </div>
           </div>
+          <div class="chat-bubble bubble-user">May available pa ba kayo ngayon? 2 pax lang kami</div>
+          <div class="chat-bubble bubble-bot">Meron pa po! Available kami hanggang 10pm. Gusto niyo bang mag-reserve? Just send your name and time. 😊</div>
+          <div class="chat-bubble bubble-user">Sige! 8pm, Santos</div>
+          <div class="chat-bubble bubble-bot">Confirmed po! Reservation para kay Santos, 2 pax, 8pm tonight. See you! 🍽️</div>
         </div>
       </div>
-      <div class="stats-btn-wrap anim-5">
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="stats-section">
+    <div class="inner">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">₱100k+</div>
+          <div class="stat-label">Sales recovered from missed chats</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">&lt; 3s</div>
+          <div class="stat-label">Average response time</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">20+</div>
+          <div class="stat-label">Hours saved per week</div>
+        </div>
+      </div>
+      <div class="stats-btn-wrap">
         <a onclick="showPage('products')" class="btn-stats">See Your Business Stats →</a>
       </div>
     </div>
@@ -1544,6 +1676,17 @@ select {
       </div>
     </div>
   </section>
+
+  <!-- SEE IT LIVE BANNER -->
+  <div class="live-banner">
+    <div class="live-banner-inner">
+      <div class="live-banner-text">
+        <div class="live-banner-title">Want to see it in action?</div>
+        <div class="live-banner-sub">Chat with two live AI bots — a beauty store and a Japanese restaurant — right now.</div>
+      </div>
+      <a onclick="showPage('demo')" class="btn btn-live live-banner-btn">▶ See It Live</a>
+    </div>
+  </div>
 
   <!-- TESTIMONIALS -->
   <div class="quote-section">
@@ -2247,6 +2390,15 @@ select {
 
   <!-- BOT CONTENT — always rendered, visible behind the overlay -->
   <div class="demo-content" id="demoContent">
+
+    <!-- PAGE HEADER -->
+    <div class="demo-page-header">
+      <div class="demo-page-header-inner">
+        <div class="section-eyebrow">Live Demo</div>
+        <div class="demo-page-title">Two real bots. Two real businesses.</div>
+        <p class="demo-page-sub">Chat with Lumi from Bloom Beauty PH and Hiro from Sakura Restaurant. Place an order. Make a reservation. See exactly what your customers would experience.</p>
+      </div>
+    </div>
 
     <div class="demo-welcome-bar" id="demoWelcome">
       Welcome! <span>You're viewing live demos of DataRunAI's Revenue Bot.</span>
