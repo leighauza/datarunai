@@ -769,6 +769,115 @@ footer {
 .founding-sub { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
 
 /* ══════════════════════════════════════════
+   PRODUCTS PAGE
+══════════════════════════════════════════ */
+
+/* How It Works */
+.steps-section { background: transparent; }
+.steps-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.step-item {
+  display: flex; gap: 28px; padding-bottom: 44px;
+  position: relative;
+}
+.step-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 23px; top: 52px;
+  width: 2px; bottom: 0;
+  background: linear-gradient(to bottom, var(--blue-200), transparent);
+}
+.step-bubble {
+  width: 48px; height: 48px; flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-700));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; position: relative; z-index: 1;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.25);
+}
+.step-body { padding-top: 8px; }
+.step-title { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 10px; }
+.step-desc { font-size: 15px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 8px; }
+.step-note { font-size: 14px; color: var(--blue-600); font-weight: 600; font-style: italic; }
+
+/* Tier cards (full detail) */
+.not-included-box {
+  background: rgba(107,122,153,0.05);
+  border: 1px solid rgba(107,122,153,0.12);
+  border-radius: var(--radius); padding: 20px 24px; margin-bottom: 20px;
+}
+.not-included-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 12px; }
+.not-included-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.not-included-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.xmark { width: 18px; height: 18px; flex-shrink: 0; border-radius: 50%; background: rgba(107,122,153,0.1); display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--ink-soft); margin-top: 1px; }
+
+/* Add-ons */
+.addons-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+.addon-card {
+  background: var(--white); border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-lg); padding: 28px 32px;
+  transition: transform .2s, box-shadow .2s;
+}
+.addon-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(59,130,246,0.1); }
+.addon-icon { font-size: 24px; margin-bottom: 12px; }
+.addon-title { font-size: 17px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 6px; }
+.addon-price { font-size: 13px; font-weight: 700; color: var(--blue-600); margin-bottom: 10px; }
+.addon-desc { font-size: 14px; color: var(--ink-mid); line-height: 1.65; }
+
+/* Retainer coverage */
+.retainer-card {
+  background: var(--white); border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-xl); padding: 48px;
+}
+.retainer-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 32px; }
+.retainer-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px; background: var(--surface); border-radius: var(--radius-sm); }
+.retainer-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+.retainer-item-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.retainer-item-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
+.retainer-note { text-align: center; font-size: 14px; font-weight: 600; color: var(--ink-soft); margin-top: 28px; }
+
+/* Value frame */
+.value-frame {
+  background: linear-gradient(145deg, var(--ink), #1a2a50);
+  border-radius: var(--radius-xl); padding: 64px;
+  position: relative; overflow: hidden;
+}
+.value-frame::before {
+  content: ''; position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(59,130,246,0.15), transparent);
+  top: -200px; right: -100px; border-radius: 50%;
+}
+.value-frame-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-400); margin-bottom: 16px; position: relative; }
+.value-frame-title { font-size: clamp(26px,3vw,38px); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 40px; line-height: 1.15; position: relative; }
+.value-stats { display: flex; flex-direction: column; gap: 16px; position: relative; margin-bottom: 44px; }
+.value-stat-row { display: flex; align-items: flex-start; gap: 16px; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm); }
+.value-stat-row .vs-label { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.55; flex: 1; }
+.value-stat-row .vs-label strong { color: white; }
+.value-cta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; position: relative; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 2px; }
+.faq-item {
+  background: var(--white); border: 1px solid rgba(59,130,246,0.1);
+  border-radius: var(--radius-sm); overflow: hidden;
+}
+.faq-item + .faq-item { border-top: none; border-radius: 0; }
+.faq-item:first-child { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+.faq-item:last-child { border-radius: 0 0 var(--radius-sm) var(--radius-sm); border-top: none; }
+.faq-q {
+  width: 100%; text-align: left; padding: 20px 24px;
+  font-family: var(--font); font-size: 15px; font-weight: 700; color: var(--ink);
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  transition: background .15s;
+}
+.faq-q:hover { background: rgba(59,130,246,0.03); }
+.faq-chevron { font-size: 12px; color: var(--ink-soft); transition: transform .2s; flex-shrink: 0; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a { display: none; padding: 0 24px 20px; font-size: 14px; color: var(--ink-mid); line-height: 1.75; border-top: 1px solid var(--border); padding-top: 16px; }
+.faq-item.open .faq-a { display: block; }
+
+/* ══════════════════════════════════════════
    ABOUT PAGE
 ══════════════════════════════════════════ */
 .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -996,7 +1105,7 @@ select {
   <a class="nav-logo" onclick="showPage('home')">Data<span>Run</span>AI</a>
   <ul class="nav-links">
     <li><a onclick="showPage('home')" data-page="home">Home</a></li>
-    <li><a onclick="showPage('portfolio')" data-page="portfolio">Portfolio</a></li>
+    <li><a onclick="showPage('products')" data-page="products">Products</a></li>
     <li><a onclick="showPage('about')" data-page="about">About Us</a></li>
     <li><a onclick="showPage('contact')" data-page="contact" class="nav-cta">Contact Us</a></li>
   </ul>
@@ -1017,7 +1126,7 @@ select {
       <h1 class="anim-2">Stop losing customers<br>to <span class="highlight">slow replies.</span></h1>
       <p class="hero-sub anim-3">DataRunAI builds simple, powerful AI tools that work for your business 24/7 — no tech team needed, no complicated setup.</p>
       <div class="hero-actions anim-4">
-        <a onclick="showPage('portfolio')" class="btn btn-primary">See Our Tools →</a>
+        <a onclick="showPage('products')" class="btn btn-primary">See Our Tools →</a>
         <a onclick="showPage('contact')" class="btn btn-outline">Book a Free Call</a>
       </div>
       <div class="hero-visual anim-5">
@@ -1055,7 +1164,7 @@ select {
         </div>
       </div>
       <div class="stats-btn-wrap anim-5">
-        <a onclick="showPage('portfolio')" class="btn-stats">See Your Business Stats →</a>
+        <a onclick="showPage('products')" class="btn-stats">See Your Business Stats →</a>
       </div>
     </div>
   </section>
@@ -1110,7 +1219,7 @@ select {
             <span class="setup">₱10,000–₱16,000 one-time setup</span>
             <span class="monthly">₱2,000–₱3,200<span style="font-size:14px;font-weight:500;">/month</span></span>
           </div>
-          <a onclick="showPage('portfolio')" class="btn-card">See full details →</a>
+          <a onclick="showPage('products')" class="btn-card">See full details →</a>
         </div>
 
         <div class="product-card featured">
@@ -1127,7 +1236,7 @@ select {
             <span class="setup">₱25,000–₱40,000 one-time setup</span>
             <span class="monthly">₱5,000–₱8,000<span style="font-size:14px;font-weight:500;">/month</span></span>
           </div>
-          <a onclick="showPage('portfolio')" class="btn-card">See full details →</a>
+          <a onclick="showPage('products')" class="btn-card">See full details →</a>
         </div>
 
         <div class="product-card">
@@ -1144,7 +1253,7 @@ select {
             <span class="setup">₱60,000–₱90,000 one-time setup</span>
             <span class="monthly">₱20,000–₱30,000<span style="font-size:14px;font-weight:500;">/month</span></span>
           </div>
-          <a onclick="showPage('portfolio')" class="btn-card">See full details →</a>
+          <a onclick="showPage('products')" class="btn-card">See full details →</a>
         </div>
 
       </div>
@@ -1195,113 +1304,183 @@ select {
 
 
 <!-- ══════════════════════════════════════════
-     PORTFOLIO
+     PRODUCTS
 ══════════════════════════════════════════ -->
-<div id="page-portfolio" class="view">
+<div id="page-products" class="view">
 
+  <!-- HERO -->
   <section style="padding:0;">
     <div class="page-hero">
-      <div class="hero-badge anim-1">Our Tools &amp; Work</div>
-      <h1 class="anim-2">Three tools. One goal —<br><span class="highlight">more revenue, less manual work.</span></h1>
-      <p class="anim-3">Each tool is built to solve a specific problem Filipino business owners face every day. Affordable, done-for-you, and ready to run in days — not months.</p>
+      <div class="hero-badge anim-1">How It Works</div>
+      <h1 class="anim-2">One chatbot. Trained on your business.<br><span class="highlight">Running 24/7.</span></h1>
+      <p class="anim-3">Every DataRunAI chatbot is built specifically for your restaurant or online store — your menu, your FAQs, your delivery areas, your tone. We set it up, we host it, we keep it updated.</p>
     </div>
   </section>
 
-  <!-- TOOLS -->
-  <section id="tools">
+  <!-- HOW IT WORKS -->
+  <section class="steps-section">
     <div class="inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+        <div>
+          <div class="section-eyebrow">The Process</div>
+          <div class="section-title" style="margin-bottom:40px;">From discovery call to live chatbot in about a month.</div>
+        </div>
+        <div></div>
+      </div>
+      <ul class="steps-list">
+        <li class="step-item">
+          <div class="step-bubble">🧠</div>
+          <div class="step-body">
+            <div class="step-title">Step 1 — Discovery Call</div>
+            <p class="step-desc">We map how your business actually runs — your most common customer questions, your menu or catalog, delivery areas, and how you speak to customers.</p>
+            <div class="step-note">We leave with a clear blueprint for your chatbot.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-bubble">⚙️</div>
+          <div class="step-body">
+            <div class="step-title">Step 2 — We Build &amp; Train</div>
+            <p class="step-desc">We handle everything behind the scenes — building your chatbot from scratch, training it on your business data, and structuring flows for inquiries, orders, and leads.</p>
+            <div class="step-note">You simply review and approve before launch.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-bubble">🧪</div>
+          <div class="step-body">
+            <div class="step-title">Step 3 — Test &amp; Refine</div>
+            <p class="step-desc">Before going live, we run it through real customer scenarios, refine the responses, and fix edge cases.</p>
+            <div class="step-note">This ensures smooth, reliable performance from day one.</div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-bubble">🚀</div>
+          <div class="step-body">
+            <div class="step-title">Step 4 — Goes Live</div>
+            <p class="step-desc">Your chatbot launches on Facebook Messenger, your website, or both — answering questions, capturing leads, and taking orders from the moment it's live.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-bubble">🔄</div>
+          <div class="step-body">
+            <div class="step-title">Step 5 — We Manage Everything</div>
+            <p class="step-desc">Your monthly retainer covers hosting, uptime monitoring, content updates as your menu or offerings change, and support whenever something needs fixing.</p>
+            <div class="step-note">A system that runs 24/7 without any extra effort from you.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-      <!-- SiteBot -->
-      <div class="product-section featured">
+  <!-- PRICING -->
+  <section style="background:linear-gradient(180deg,transparent,rgba(219,234,254,0.25) 30%,rgba(219,234,254,0.12) 70%,transparent);">
+    <div class="inner">
+      <div class="section-eyebrow">Pricing</div>
+      <div class="section-title">Choose the tier that matches your business size.</div>
+      <div class="section-sub">Setup is a one-time fee. The monthly retainer keeps your chatbot live, updated, and supported — no hidden charges, no surprise costs.</div>
+
+      <!-- Tier 1 -->
+      <div class="product-section" style="margin-bottom:28px;">
+        <div class="product-layout">
+          <div>
+            <div class="ps-tag">For Growing Businesses</div>
+            <div class="ps-name">The Basic Bot</div>
+            <div class="ps-tagline">Stop missing inquiries. Start capturing leads.</div>
+            <p class="ps-body">For growing restaurants and boutiques ready to stop missing inquiries. Full FAQ automation, lead capture, and 24/7 availability — all on one channel.</p>
+            <p class="ps-best"><strong>Best for:</strong> Single-location restaurants, specialty F&amp;B (milk tea shops, bakeries, dessert shops), and independent boutiques. Typically businesses receiving 200–600 customer messages per month who handle every inquiry manually.</p>
+          </div>
+          <div>
+            <div class="features-box">
+              <div class="features-label">What's included</div>
+              <ul class="features-list">
+                <li><span class="fcheck">✓</span> AI chatbot on 1 channel</li>
+                <li><span class="fcheck">✓</span> Unlimited FAQ automation — menu, hours, delivery, promos, policies</li>
+                <li><span class="fcheck">✓</span> Lead capture — saves name, number, and inquiry automatically</li>
+                <li><span class="fcheck">✓</span> Auto-greeting and smart handoff to you for complex questions</li>
+                <li><span class="fcheck">✓</span> Responds in Tagalog, Taglish, and English</li>
+                <li><span class="fcheck">✓</span> Monthly uptime monitoring and content updates</li>
+              </ul>
+            </div>
+            <div class="not-included-box">
+              <div class="not-included-label">Not included in this tier</div>
+              <ul class="not-included-list">
+                <li><span class="xmark">✕</span> Order taking or reservation flow</li>
+                <li><span class="xmark">✕</span> Analytics dashboard</li>
+              </ul>
+            </div>
+            <div class="pricing-row">
+              <div>
+                <div class="pricing-main">₱10,000–₱16,000 <span style="font-size:14px;font-weight:500;">setup</span></div>
+                <div class="pricing-note">then ₱2,000–₱3,200/month · 3-month minimum</div>
+              </div>
+              <a onclick="showPage('contact')" class="btn-product">Get Started →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="product-section featured" style="margin-bottom:28px;">
         <div class="product-layout">
           <div>
             <div class="ps-tag">⭐ Most Popular</div>
-            <div class="ps-name">SiteBot</div>
-            <div class="ps-tagline">AI chatbot for your website</div>
-            <p class="ps-body">Your website visitors have questions. Right now, most of them leave without an answer — and go to your competitor instead.</p>
-            <p class="ps-body">SiteBot is an AI-powered chat widget that lives on your website and answers customer questions instantly, 24/7. You give us your business info — services, pricing, hours, FAQs — and we handle the rest.</p>
-            <p class="ps-best"><strong>Best for:</strong> Clinics, law offices, real estate brokers, salons, repair shops, and any business with a website.</p>
+            <div class="ps-name">The Revenue Bot</div>
+            <div class="ps-tagline">Automate orders, reservations, and lead capture.</div>
+            <p class="ps-body">For established businesses that want to automate orders and reservations on top of FAQ handling. Full order flow, CRM logging, and daily summaries sent straight to you.</p>
+            <p class="ps-best"><strong>Best for:</strong> Established restaurants with 1–3 locations, online fashion and lifestyle stores doing regular product drops, and delivery-focused F&amp;B businesses. Typically businesses receiving 600–3,000 messages per month and losing orders because they can't reply fast enough.</p>
           </div>
           <div>
             <div class="features-box">
-              <div class="features-label">What it does</div>
+              <div class="features-label">Everything in The Basic Bot, plus</div>
               <ul class="features-list">
-                <li><span class="fcheck">✓</span> Answers common customer questions automatically</li>
-                <li><span class="fcheck">✓</span> Captures lead info and sends it to you</li>
-                <li><span class="fcheck">✓</span> Works on any website — no platform restrictions</li>
-                <li><span class="fcheck">✓</span> Responds in Filipino, Taglish, or English</li>
+                <li><span class="fcheck">✓</span> 2 channels</li>
+                <li><span class="fcheck">✓</span> Full order taking — item, quantity, delivery address, payment confirmation prompt</li>
+                <li><span class="fcheck">✓</span> Reservation booking — date, time, party size, special requests, auto-confirmation</li>
+                <li><span class="fcheck">✓</span> Daily order &amp; reservation summary sent every morning</li>
+                <li><span class="fcheck">✓</span> Google Sheets CRM — every lead and order logged automatically</li>
+                <li><span class="fcheck">✓</span> Monthly performance report — conversations, top FAQs, leads captured</li>
               </ul>
             </div>
             <div class="pricing-row">
               <div>
-                <div class="pricing-main">₱15,000 setup · ₱1,500/mo</div>
-                <div class="pricing-note">Full setup done by us. Cancel anytime after first 3 months.</div>
+                <div class="pricing-main">₱25,000–₱40,000 <span style="font-size:14px;font-weight:500;">setup</span></div>
+                <div class="pricing-note">then ₱5,000–₱8,000/month · 3-month minimum</div>
               </div>
-              <a onclick="showPage('contact')" class="btn-product">Get SiteBot →</a>
+              <a onclick="showPage('contact')" class="btn-product">Get Started →</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ProposalAI -->
+      <!-- Tier 3 -->
       <div class="product-section">
         <div class="product-layout">
           <div>
-            <div class="ps-tag">Self-Serve SaaS</div>
-            <div class="ps-name">ProposalAI</div>
-            <div class="ps-tagline">Professional proposals in 30 seconds</div>
-            <p class="ps-body">Writing proposals takes hours. Chasing clients for a decision takes days. ProposalAI cuts the time it takes to go from conversation to signed deal.</p>
-            <p class="ps-body">Fill in a short form — client name, project scope, timeline, price — and get a polished, professional proposal ready to send in under a minute.</p>
-            <p class="ps-best"><strong>Best for:</strong> Freelancers, marketing agencies, contractors, consultants, event suppliers, and any business that sends quotes or proposals.</p>
+            <div class="ps-tag">For High-Volume Businesses</div>
+            <div class="ps-name">The Intelligence Bot</div>
+            <div class="ps-tagline">Customer data, demand insights, and targeted promos.</div>
+            <p class="ps-body">For high-volume businesses that want to use their customer data to drive marketing campaigns — not just automate replies. 4 channels, behavioral analytics, and repeat customer recognition.</p>
+            <p class="ps-best"><strong>Best for:</strong> Restaurant groups with multiple branches, high-volume online retailers with large social followings, and cloud kitchen operators running multiple brands. Typically businesses receiving 3,000+ messages per month.</p>
           </div>
           <div>
             <div class="features-box">
-              <div class="features-label">What it does</div>
+              <div class="features-label">Everything in The Revenue Bot, plus</div>
               <ul class="features-list">
-                <li><span class="fcheck">✓</span> Generates branded, professional proposals instantly</li>
-                <li><span class="fcheck">✓</span> Formats scope, deliverables, terms, and pricing clearly</li>
-                <li><span class="fcheck">✓</span> Works for any service-based business</li>
-                <li><span class="fcheck">✓</span> Self-serve — no setup needed, use it anytime</li>
+                <li><span class="fcheck">✓</span> 4 channels — Facebook Messenger, Instagram DMs, website widget, Viber</li>
+                <li><span class="fcheck">✓</span> Customer data layer — every customer profiled and remembered</li>
+                <li><span class="fcheck">✓</span> Behavioral analytics — top queries, peak hours, product interest trends</li>
+                <li><span class="fcheck">✓</span> Demand intelligence — know when a product is trending before you run out</li>
+                <li><span class="fcheck">✓</span> Targeted promo blasts to past customers based on order history</li>
+                <li><span class="fcheck">✓</span> Repeat customer recognition — returning customers get a personalised greeting</li>
+                <li><span class="fcheck">✓</span> Monthly insights report + quarterly strategy call</li>
+                <li><span class="fcheck">✓</span> Priority support — issues resolved within 8 business hours</li>
               </ul>
             </div>
             <div class="pricing-row">
               <div>
-                <div class="pricing-main">₱799/month</div>
-                <div class="pricing-note">No setup fee. No contract. Cancel anytime.</div>
+                <div class="pricing-main">₱60,000–₱90,000 <span style="font-size:14px;font-weight:500;">setup</span></div>
+                <div class="pricing-note">then ₱20,000–₱30,000/month · 3-month minimum</div>
               </div>
-              <a onclick="showPage('contact')" class="btn-product">Try ProposalAI →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- BookingBot -->
-      <div class="product-section">
-        <div class="product-layout">
-          <div>
-            <div class="ps-tag">Add-On Available</div>
-            <div class="ps-name">BookingBot</div>
-            <div class="ps-tagline">Let clients book themselves</div>
-            <p class="ps-body">Stop going back and forth over schedules. BookingBot is an AI-powered booking assistant that collects your client's name, preferred date, service, and contact info — automatically — and sends it straight to you.</p>
-            <p class="ps-body">No calendar software to connect. No complicated setup. Just a smart assistant that handles the scheduling conversation for you.</p>
-            <p class="ps-best"><strong>Best for:</strong> Clinics, tutors, salons, repair shops, coaches, and any business that runs on appointments.</p>
-          </div>
-          <div>
-            <div class="features-box">
-              <div class="features-label">What it does</div>
-              <ul class="features-list">
-                <li><span class="fcheck">✓</span> Handles appointment booking conversations automatically</li>
-                <li><span class="fcheck">✓</span> Collects all the info you need before confirming</li>
-                <li><span class="fcheck">✓</span> Sends you a clean summary for every booking request</li>
-                <li><span class="fcheck">✓</span> Works standalone or as an add-on to SiteBot</li>
-              </ul>
-            </div>
-            <div class="pricing-row">
-              <div>
-                <div class="pricing-main">₱8,000 setup · ₱500/mo</div>
-                <div class="pricing-note">Or add to an existing SiteBot for just ₱5,000.</div>
-              </div>
-              <a onclick="showPage('contact')" class="btn-product">Get BookingBot →</a>
+              <a onclick="showPage('contact')" class="btn-product">Get Started →</a>
             </div>
           </div>
         </div>
@@ -1310,60 +1489,187 @@ select {
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio">
+  <!-- ADD-ONS -->
+  <section>
     <div class="inner">
-      <div class="section-eyebrow">Our Work</div>
-      <div class="section-title">Real businesses. Real results.</div>
-      <div class="section-sub">We're in our early days — and actively working with our first clients. Case studies and results will live here as we grow.</div>
-      <div class="portfolio-grid">
-        <div class="portfolio-card">
-          <div class="portfolio-label coming">In Progress</div>
-          <div class="portfolio-client">BrightSmile Dental</div>
-          <div class="portfolio-industry">Dental Clinic · Pasig City</div>
-          <div class="portfolio-product-used">🤖 SiteBot</div>
-          <div>
-            <div class="placeholder-bar full"></div>
-            <div class="placeholder-bar medium"></div>
-            <div class="placeholder-bar short"></div>
-            <p style="font-size:12px;color:var(--ink-soft);margin-top:14px;font-style:italic;">Full case study coming soon.</p>
-          </div>
+      <div class="section-eyebrow">Add-Ons</div>
+      <div class="section-title">Already on a tier? Stack on exactly what you need.</div>
+      <div class="section-sub" style="margin-bottom:40px;">Add any of these on top of your existing tier — no package changes, no hassle.</div>
+      <div class="addons-grid">
+        <div class="addon-card">
+          <div class="addon-icon">📲</div>
+          <div class="addon-title">Extra Channel</div>
+          <div class="addon-price">+₱5,000 setup · +₱1,000/month</div>
+          <p class="addon-desc">Add Instagram DMs, Viber, or a second website widget on top of your tier's included channels. Every platform your customers use, covered.</p>
         </div>
-        <div class="portfolio-card">
-          <div class="portfolio-label coming">In Progress</div>
-          <div class="portfolio-client">A Manila Freelancer</div>
-          <div class="portfolio-industry">Marketing &amp; Design · Manila</div>
-          <div class="portfolio-product-used">📄 ProposalAI</div>
-          <div>
-            <div class="placeholder-bar full"></div>
-            <div class="placeholder-bar medium"></div>
-            <div class="placeholder-bar short"></div>
-            <p style="font-size:12px;color:var(--ink-soft);margin-top:14px;font-style:italic;">Full case study coming soon.</p>
-          </div>
+        <div class="addon-card">
+          <div class="addon-icon">🔄</div>
+          <div class="addon-title">Extra Content Updates</div>
+          <div class="addon-price">+₱1,500/month</div>
+          <p class="addon-desc">Your tier includes one monthly update. This add-on is for businesses with fast-changing menus or frequent catalog changes — we update as often as you need.</p>
         </div>
-        <div class="portfolio-card invite">
-          <div>
-            <div class="invite-icon">✦</div>
-            <div class="invite-title">Could be your business</div>
-            <p class="invite-body">We're taking on founding clients now. You'll get our best attention, priority support, and founding client pricing — and your results will be the first case study on this page.</p>
-          </div>
-          <a onclick="showPage('contact')" class="btn-invite">Book a Free Call →</a>
+        <div class="addon-card">
+          <div class="addon-icon">📣</div>
+          <div class="addon-title">Promo Blast Campaign</div>
+          <div class="addon-price">+₱2,500 per campaign</div>
+          <p class="addon-desc">One broadcast message sent to all your past customers — perfect for a new menu launch, flash sale, or holiday promo. Order one whenever you need it.</p>
         </div>
-      </div>
-      <div class="founding-banner">
-        <div>
-          <div class="founding-title">Founding client pricing is available now</div>
-          <div class="founding-sub">We're actively looking for our first 10 clients. Early clients get priority onboarding, direct access to the founder, and locked-in rates before prices increase.</div>
+        <div class="addon-card">
+          <div class="addon-icon">📊</div>
+          <div class="addon-title">Analytics Dashboard</div>
+          <div class="addon-price">+₱6,000 setup · +₱2,000/month</div>
+          <p class="addon-desc">A live dashboard showing your top customer queries, demand trends, peak inquiry hours, and lead conversion rate — built custom for your business.</p>
         </div>
-        <a onclick="showPage('contact')" class="btn btn-primary" style="white-space:nowrap;">Book a Free Call →</a>
       </div>
     </div>
   </section>
 
+  <!-- RETAINER COVERAGE -->
+  <section style="background:linear-gradient(180deg,transparent,rgba(219,234,254,0.2) 40%,rgba(219,234,254,0.1) 70%,transparent);">
+    <div class="inner">
+      <div class="retainer-card">
+        <div class="section-eyebrow">What Your Retainer Covers</div>
+        <div class="section-title" style="margin-bottom:8px;">Your monthly retainer is not a maintenance fee.</div>
+        <p style="font-size:16px;color:var(--ink-mid);line-height:1.7;">It's a fully managed service — we run everything so you don't have to think about it.</p>
+        <div class="retainer-grid">
+          <div class="retainer-item">
+            <div class="retainer-icon">🖥️</div>
+            <div>
+              <div class="retainer-item-title">Hosting &amp; infrastructure</div>
+              <div class="retainer-item-desc">Your chatbot stays live 24/7 on reliable servers — no downtime on your end.</div>
+            </div>
+          </div>
+          <div class="retainer-item">
+            <div class="retainer-icon">🔔</div>
+            <div>
+              <div class="retainer-item-title">Uptime monitoring</div>
+              <div class="retainer-item-desc">We're alerted the moment anything goes down, before you even notice.</div>
+            </div>
+          </div>
+          <div class="retainer-item">
+            <div class="retainer-icon">✏️</div>
+            <div>
+              <div class="retainer-item-title">Monthly content update</div>
+              <div class="retainer-item-desc">Menu changes, new promos, updated FAQs — send us the changes and we handle it within 24–48 hours.</div>
+            </div>
+          </div>
+          <div class="retainer-item">
+            <div class="retainer-icon">🔧</div>
+            <div>
+              <div class="retainer-item-title">Bug fixes</div>
+              <div class="retainer-item-desc">If something breaks, we fix it. No back-and-forth, no extra charge.</div>
+            </div>
+          </div>
+          <div class="retainer-item">
+            <div class="retainer-icon">📈</div>
+            <div>
+              <div class="retainer-item-title">Monthly performance report</div>
+              <div class="retainer-item-desc">Conversations handled, leads captured, top questions asked. <em style="color:var(--ink-soft);">Tier 2 and above.</em></div>
+            </div>
+          </div>
+          <div class="retainer-item">
+            <div class="retainer-icon">⚡</div>
+            <div>
+              <div class="retainer-item-title">Priority support</div>
+              <div class="retainer-item-desc">Issues escalated and resolved within 8 business hours. <em style="color:var(--ink-soft);">Tier 3 only.</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="retainer-note">No hidden fees. No surprise charges. No technical headaches.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE FRAME -->
+  <section>
+    <div class="inner">
+      <div class="value-frame">
+        <div class="value-frame-eyebrow">The Cost of Waiting</div>
+        <div class="value-frame-title">Every month without a chatbot, you're leaving money on the table.</div>
+        <div class="value-stats">
+          <div class="value-stat-row">
+            <div class="vs-label">For every <strong>60 hours a month</strong> spent on manual replies — that's time that could go into your next promo, your next product, or simply not burning out.</div>
+          </div>
+          <div class="value-stat-row">
+            <div class="vs-label">For every <strong>100 unanswered messages a month</strong>, you're losing an estimated <strong>30–50 potential orders.</strong></div>
+          </div>
+          <div class="value-stat-row">
+            <div class="vs-label">For every <strong>₱500 average order value</strong>, that's <strong>₱15,000–₱25,000 in monthly revenue</strong> walking out the door — from missed chats alone.</div>
+          </div>
+          <div class="value-stat-row">
+            <div class="vs-label">For every <strong>month without a chatbot</strong>, a competitor who has one is capturing the customers you're missing after hours.</div>
+          </div>
+        </div>
+        <div class="value-cta">
+          <a onclick="showPage('contact')" class="btn btn-white">Book a Free Call →</a>
+          <a href="mailto:hello@datarunai.com" class="btn btn-ghost-white">Email Us Instead</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="inner">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;">
+        <div>
+          <div class="section-eyebrow">FAQ</div>
+          <div class="section-title" style="margin-bottom:16px;">Common questions.</div>
+          <p style="font-size:15px;color:var(--ink-mid);line-height:1.7;">Can't find your answer? <a onclick="showPage('contact')" style="color:var(--blue-600);font-weight:600;cursor:pointer;">Book a free call</a> and we'll walk you through everything.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              How long does setup take?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-a">Depending on complexity, about a month from your discovery call to going live.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Do I need a website?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-a">No. Your chatbot can run entirely on social media. A website widget is an option, not a requirement.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              What if my menu or products change?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-a">Your monthly retainer includes one content update per month. Compile the changes, send them to us, and we handle it — usually within 24–48 hours.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Is there a contract?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-a">Setup is a one-time fee. The retainer runs month-to-month after an initial 3-month minimum — enough time to properly train the chatbot and for you to see real results.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              What language does it speak?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-a">Tagalog, Taglish, and English — including how customers actually type, not textbook Filipino.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              What happens if it goes down?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-a">We monitor uptime 24/7. If something breaks, we fix it. You don't need to do anything.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <div class="cta-section">
     <div class="cta-card">
-      <div class="cta-title">Ready to put AI to work for your business?</div>
-      <div class="cta-sub">No pressure, no pitch. Just a free 30-minute call to understand your business and show you exactly what's possible.</div>
+      <div class="cta-title">Not sure which tier is right for you?</div>
+      <div class="cta-sub">Book a free 30-minute call. Tell us about your business and we'll tell you exactly which tier fits — and give you a clear quote. No pitch. No pressure. Just clarity.</div>
       <div class="cta-btns">
         <a onclick="showPage('contact')" class="btn btn-white">Book a Free Call →</a>
         <a href="mailto:hello@datarunai.com" class="btn btn-ghost-white">Email Us Instead</a>
@@ -1371,7 +1677,7 @@ select {
     </div>
   </div>
 
-</div><!-- /page-portfolio -->
+</div><!-- /page-products -->
 
 
 <!-- ══════════════════════════════════════════
@@ -1623,7 +1929,7 @@ select {
   <a class="footer-logo" onclick="showPage('home')">Data<span>Run</span>AI</a>
   <span class="footer-copy">© 2026 DataRunAI. All rights reserved.</span>
   <ul class="footer-links">
-    <li><a onclick="showPage('portfolio')">Portfolio</a></li>
+    <li><a onclick="showPage('products')">Products</a></li>
     <li><a onclick="showPage('about')">About Us</a></li>
     <li><a onclick="showPage('contact')">Contact Us</a></li>
   </ul>
@@ -1656,7 +1962,7 @@ select {
   // On first load, check URL hash
   (function init() {
     const hash = location.hash.replace('#', '');
-    showPage(['home','portfolio','about','contact'].includes(hash) ? hash : 'home');
+    showPage(['home','products','about','contact'].includes(hash) ? hash : 'home');
   })();
 
   // Contact form
@@ -1669,6 +1975,13 @@ select {
   }
   function prevTestimonial() { showTestimonial((currentTestimonial - 1 + 2) % 2); }
   function nextTestimonial() { showTestimonial((currentTestimonial + 1) % 2); }
+
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
