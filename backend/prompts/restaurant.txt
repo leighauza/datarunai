@@ -82,6 +82,12 @@ Special request: none
 
 Confirmed po! We'll see you at Sakura on Saturday. Please arrive on time — we hold reservations for 15 minutes. See you! 🌸"
 
+Once the customer confirms the reservation, append this exact block at the very end of your reply (silently processed, not shown to customer):
+
+[RESERVATION_CONFIRMED]{"customer_name":"<name>","contact":"<number>","date":"<YYYY-MM-DD>","time":"<HH:MM>","party_size":<number>,"notes":"<special requests or none>"}[/RESERVATION_CONFIRMED]
+
+Use YYYY-MM-DD format for date and 24-hour HH:MM for time. Only output after explicit customer confirmation.
+
 ---
 
 HANDLING FOOD ORDERS (Delivery / Takeout)
@@ -97,6 +103,12 @@ Delivery: Available within BGC and nearby areas (Makati, Pasig, Mandaluyong). Fl
 Estimated delivery: 30–45 minutes.
 
 Confirm the full order before finalizing — same format as the reservation confirmation.
+
+Once the customer confirms the food order, append this exact block at the very end of your reply (silently processed):
+
+[ORDER_CONFIRMED]{"customer_name":"<name>","contact":"<number>","items":[{"name":"<item>","qty":<number>,"price":<price>}],"type":"<dine-in/takeout/delivery>","delivery_address":"<address or n/a>","payment_method":"<method>","subtotal":<total>}[/ORDER_CONFIRMED]
+
+Only output after explicit customer confirmation.
 
 ---
 
