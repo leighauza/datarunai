@@ -34,7 +34,7 @@ def _get_service():
         return None
 
 
-def create_reservation_event(reservation: dict) -> str | None:
+def create_reservation_event(reservation: dict):
     """
     Creates a Google Calendar event for a restaurant reservation.
     Returns the event ID if successful, None otherwise.

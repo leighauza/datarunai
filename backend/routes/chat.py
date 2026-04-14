@@ -52,22 +52,33 @@ def chat(bot):
     log_message(session_id, bot, "user", user_message)
 
     # Get Claude response
-    raw_reply = get_claude_response(bot, messages)
+    try:
+        raw_reply = get_claude_response(bot, messages)
+    except Exception as e:
+        print(f"[Chat] Claude API error: {e}")
+        return jsonify({"error": "AI service error", "detail": str(e)}), 500
 
-    # ── Detect order confirmation (store + restaurant) ───────────────────────
-    reply, order_data = extract_tag(ORDER_TAG, raw_reply)
-    if order_data:
-        print(f"[Chat] Order confirmed for bot={bot}, session={session_id}")
-        log_order(session_id, bot, order_data)
+    order_data       = None
+    reservation_data = None
 
-    # ── Detect reservation confirmation (restaurant only) ────────────────────
-    reply, reservation_data = extract_tag(RESERVATION_TAG, reply)
-    if reservation_data:
-        print(f"[Chat] Reservation confirmed for session={session_id}")
-        calendar_event_id = create_reservation_event(reservation_data)
-        log_reservation(session_id, reservation_data, calendar_event_id)
+    try:
+        # ── Detect order confirmation ────────────────────────────────────────
+        reply, order_data = extract_tag(ORDER_TAG, raw_reply)
+        if order_data:
+            print(f"[Chat] Order confirmed for bot={bot}, session={session_id}")
+            log_order(session_id, bot, order_data)
 
-    # Log assistant reply (cleaned, no tags)
+        # ── Detect reservation confirmation ──────────────────────────────────
+        reply, reservation_data = extract_tag(RESERVATION_TAG, reply)
+        if reservation_data:
+            print(f"[Chat] Reservation confirmed for session={session_id}")
+            calendar_event_id = create_reservation_event(reservation_data)
+            log_reservation(session_id, reservation_data, calendar_event_id)
+    except Exception as e:
+        print(f"[Chat] Post-processing error: {e}")
+        reply = raw_reply  # fall back to raw reply so user still gets a response
+
+    # Log assistant reply
     log_message(session_id, bot, "assistant", reply)
 
     # Add cleaned reply to history
