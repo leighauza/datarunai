@@ -113,6 +113,277 @@ nav {
 }
 .nav-cta:hover { background: var(--blue-700) !important; transform: translateY(-1px); }
 .nav-cta.active { color: #fff !important; }
+.nav-demo { background: linear-gradient(135deg, #7c3aed, #2563eb) !important; }
+.nav-demo:hover { background: linear-gradient(135deg, #6d28d9, #1d4ed8) !important; }
+
+/* ── DEMO PAGE ── */
+#page-demo { background: #f8faff; }
+.demo-gateway {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: linear-gradient(160deg, #f0f4ff 0%, #faf5ff 100%);
+}
+.demo-gateway.hidden { display: none; }
+.demo-bots { display: none; }
+.demo-bots.visible { display: block; }
+.gateway-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 40px rgba(37,99,235,.10);
+  padding: 48px 40px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+.gateway-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124,58,237,.08);
+  color: #7c3aed;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 99px;
+  margin-bottom: 20px;
+}
+.gateway-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+.gateway-sub {
+  font-size: 15px;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+.gateway-form { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.gateway-form label { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; display: block; }
+.gateway-form input, .gateway-form select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .15s;
+  background: #fff;
+}
+.gateway-form input:focus, .gateway-form select:focus { border-color: #7c3aed; }
+.btn-enter {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: opacity .2s, transform .2s;
+}
+.btn-enter:hover { opacity: .92; transform: translateY(-1px); }
+.demo-welcome-bar {
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  color: #fff;
+  text-align: center;
+  padding: 18px 24px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.demo-welcome-bar span { opacity: .8; font-weight: 400; }
+.demo-section {
+  padding: 80px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.demo-section + .demo-section { border-top: 1px solid #e8edf8; }
+.demo-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.demo-row.flip { direction: rtl; }
+.demo-row.flip > * { direction: ltr; }
+.demo-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(37,99,235,.07);
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 99px;
+  margin-bottom: 16px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.demo-brand-name {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+.demo-brand-desc {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.demo-brand-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.demo-chip {
+  background: #f0f4ff;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 99px;
+}
+.demo-chatbox {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(37,99,235,.10);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+}
+.demo-chat-header {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.demo-chat-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.demo-chat-name { color: #fff; font-weight: 700; font-size: 14px; }
+.demo-chat-status {
+  color: rgba(255,255,255,.75);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.demo-status-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; }
+.demo-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f8faff;
+}
+.demo-messages::-webkit-scrollbar { width: 4px; }
+.demo-messages::-webkit-scrollbar-thumb { background: #dde3f0; border-radius: 4px; }
+.demo-bubble {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+.demo-bubble.user { background: #2563eb; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.demo-bubble.bot { background: #fff; color: #1e293b; align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.demo-typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 10px 14px;
+  background: #fff;
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.demo-typing span {
+  width: 7px; height: 7px; border-radius: 50%; background: #94a3b8;
+  animation: demoDot 1.2s infinite;
+}
+.demo-typing span:nth-child(2) { animation-delay: .2s; }
+.demo-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes demoDot { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-5px); } }
+.demo-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #f8faff;
+}
+.demo-suggestion {
+  background: #fff;
+  border: 1px solid #dde3f0;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #2563eb;
+  cursor: pointer;
+  transition: all .15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.demo-suggestion:hover { background: #2563eb; color: #fff; border-color: #2563eb; }
+.demo-input-row {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fff;
+  border-top: 1px solid #f0f4ff;
+}
+.demo-input {
+  flex: 1;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color .15s;
+}
+.demo-input:focus { border-color: #2563eb; }
+.demo-send {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #2563eb;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.demo-send:hover { background: #1d4ed8; }
+.demo-send svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 768px) {
+  .demo-row, .demo-row.flip { grid-template-columns: 1fr; direction: ltr; gap: 32px; }
+  .demo-chatbox { height: 440px; }
+  .gateway-card { padding: 32px 24px; }
+}
 
 /* ─── PAGE SECTIONS ─── */
 .view { display: none; }
@@ -1107,6 +1378,7 @@ select {
     <li><a onclick="showPage('home')" data-page="home">Home</a></li>
     <li><a onclick="showPage('products')" data-page="products">Products</a></li>
     <li><a onclick="showPage('about')" data-page="about">About Us</a></li>
+    <li><a onclick="showPage('demo')" data-page="demo" class="nav-cta nav-demo">See It Live</a></li>
     <li><a onclick="showPage('contact')" data-page="contact" class="nav-cta">Contact Us</a></li>
   </ul>
 </nav>
@@ -1924,6 +2196,142 @@ select {
 </div><!-- /page-contact -->
 
 
+<!-- ══════════════════════════════════════════
+     DEMO
+══════════════════════════════════════════ -->
+<div id="page-demo" class="view">
+
+  <!-- GATEWAY -->
+  <div class="demo-gateway" id="demoGateway">
+    <div class="gateway-card">
+      <div class="gateway-badge">✨ Live Demo</div>
+      <div class="gateway-title">See the bots in action</div>
+      <p class="gateway-sub">Tell us a bit about yourself and we'll show you exactly what your customers would experience.</p>
+      <form class="gateway-form" id="gatewayForm">
+        <div>
+          <label for="gwName">Your name</label>
+          <input id="gwName" type="text" placeholder="e.g. Maria Santos" required />
+        </div>
+        <div>
+          <label for="gwIndustry">Your industry</label>
+          <select id="gwIndustry">
+            <option value="">Select one...</option>
+            <option value="restaurant">Restaurant / Food & Beverage</option>
+            <option value="retail">Retail / Online Store</option>
+            <option value="beauty">Beauty / Skincare</option>
+            <option value="services">Services</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="gwBusiness">Business name <span style="color:#94a3b8;font-weight:400;">(optional)</span></label>
+          <input id="gwBusiness" type="text" placeholder="e.g. Santos Eats" />
+        </div>
+        <button type="submit" class="btn-enter">Enter the demo →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- BOTS -->
+  <div class="demo-bots" id="demoBots">
+
+    <div class="demo-welcome-bar" id="demoWelcome">
+      Welcome! <span>You're viewing live demos of DataRunAI's Revenue Bot.</span>
+    </div>
+
+    <!-- SECTION 1: BEAUTY STORE -->
+    <div class="demo-section">
+      <div class="demo-row">
+
+        <!-- Brand brief -->
+        <div>
+          <div class="demo-brand-badge">🛍️ Online Store Demo</div>
+          <div class="demo-brand-name">Bloom Beauty PH</div>
+          <p class="demo-brand-desc">A Filipino online beauty brand offering skincare and makeup built for tropical skin. Lumi, their AI assistant, answers product questions, recommends items by skin type, and takes orders — 24/7, in Tagalog or English.</p>
+          <div class="demo-brand-chips">
+            <span class="demo-chip">Product recommendations</span>
+            <span class="demo-chip">Order taking</span>
+            <span class="demo-chip">Tagalog + English</span>
+            <span class="demo-chip">24/7</span>
+          </div>
+        </div>
+
+        <!-- Chatbot -->
+        <div class="demo-chatbox" id="storeChatbox">
+          <div class="demo-chat-header">
+            <div class="demo-chat-avatar">🛍️</div>
+            <div>
+              <div class="demo-chat-name">Lumi — Bloom Beauty PH</div>
+              <div class="demo-chat-status"><span class="demo-status-dot"></span>Online now</div>
+            </div>
+          </div>
+          <div class="demo-messages" id="storeMsgs"></div>
+          <div class="demo-suggestions" id="storeSuggestions">
+            <button class="demo-suggestion" onclick="demoSend('store', this.textContent)">What's good for oily skin?</button>
+            <button class="demo-suggestion" onclick="demoSend('store', this.textContent)">I want to order the Vitamin C serum</button>
+            <button class="demo-suggestion" onclick="demoSend('store', this.textContent)">Do you ship to Cebu?</button>
+            <button class="demo-suggestion" onclick="demoSend('store', this.textContent)">What shades does the cushion come in?</button>
+          </div>
+          <div class="demo-input-row">
+            <input class="demo-input" id="storeInput" type="text" placeholder="Ask Lumi anything..." />
+            <button class="demo-send" onclick="demoSend('store')">
+              <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: RESTAURANT -->
+    <div class="demo-section" style="background: linear-gradient(180deg, transparent, rgba(219,234,254,0.15) 50%, transparent);">
+      <div class="demo-row flip">
+
+        <!-- Brand brief -->
+        <div>
+          <div class="demo-brand-badge">🍣 Restaurant Demo</div>
+          <div class="demo-brand-name">Sakura Japanese Restaurant</div>
+          <p class="demo-brand-desc">A cozy Japanese restaurant in BGC, Taguig. Hiro, their AI concierge, handles table reservations and food orders — collecting all the details, confirming with the customer, and logging everything instantly.</p>
+          <div class="demo-brand-chips">
+            <span class="demo-chip">Table reservations</span>
+            <span class="demo-chip">Food orders</span>
+            <span class="demo-chip">Google Calendar sync</span>
+            <span class="demo-chip">24/7</span>
+          </div>
+        </div>
+
+        <!-- Chatbot -->
+        <div class="demo-chatbox" id="restaurantChatbox">
+          <div class="demo-chat-header">
+            <div class="demo-chat-avatar">🍣</div>
+            <div>
+              <div class="demo-chat-name">Hiro — Sakura Restaurant</div>
+              <div class="demo-chat-status"><span class="demo-status-dot"></span>Online now</div>
+            </div>
+          </div>
+          <div class="demo-messages" id="restaurantMsgs"></div>
+          <div class="demo-suggestions" id="restaurantSuggestions">
+            <button class="demo-suggestion" onclick="demoSend('restaurant', this.textContent)">Can I get a table for 2 this Friday?</button>
+            <button class="demo-suggestion" onclick="demoSend('restaurant', this.textContent)">I want to order for delivery</button>
+            <button class="demo-suggestion" onclick="demoSend('restaurant', this.textContent)">What's your best ramen?</button>
+            <button class="demo-suggestion" onclick="demoSend('restaurant', this.textContent)">Do you have vegetarian options?</button>
+          </div>
+          <div class="demo-input-row">
+            <input class="demo-input" id="restaurantInput" type="text" placeholder="Ask Hiro anything..." />
+            <button class="demo-send" onclick="demoSend('restaurant')">
+              <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /demo-bots -->
+
+</div><!-- /page-demo -->
+
+
 <!-- ─── FOOTER ─── -->
 <footer>
   <a class="footer-logo" onclick="showPage('home')">Data<span>Run</span>AI</a>
@@ -1962,7 +2370,7 @@ select {
   // On first load, check URL hash
   (function init() {
     const hash = location.hash.replace('#', '');
-    showPage(['home','products','about','contact'].includes(hash) ? hash : 'home');
+    showPage(['home','products','about','contact','demo'].includes(hash) ? hash : 'home');
   })();
 
   // Contact form
@@ -1982,6 +2390,124 @@ select {
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
+
+  // ── Demo page ────────────────────────────────────────────────────────────────
+  const DEMO_API = 'https://datarunai-production.up.railway.app';
+  const demoState = {
+    store:      { messages: [], typing: false, greeted: false },
+    restaurant: { messages: [], typing: false, greeted: false }
+  };
+  const GREETINGS = {
+    store:      "Hi! I'm Lumi, your Bloom Beauty assistant. Ask me about our products or place an order! 🌸",
+    restaurant: "Konnichiwa! I'm Hiro from Sakura. I can help with reservations or food orders. 🍣"
+  };
+  let demoSessionId = null;
+
+  document.getElementById('gatewayForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const name     = document.getElementById('gwName').value.trim();
+    const industry = document.getElementById('gwIndustry').value;
+    const business = document.getElementById('gwBusiness').value.trim();
+    if (!name) return;
+
+    // Update welcome bar
+    document.getElementById('demoWelcome').innerHTML =
+      `Welcome, <strong>${name}</strong>! <span>You're viewing live demos of DataRunAI's Revenue Bot.</span>`;
+
+    // Try to create Supabase session (graceful fail if backend not live yet)
+    try {
+      const res = await fetch(`${DEMO_API}/api/session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, industry, business_type: business })
+      });
+      const data = await res.json();
+      demoSessionId = data.session_id || null;
+    } catch (_) { /* backend not live yet — demo still works */ }
+
+    // Show bots, hide gateway
+    document.getElementById('demoGateway').classList.add('hidden');
+    document.getElementById('demoBots').classList.add('visible');
+
+    // Greet both bots
+    demoGreet('store');
+    demoGreet('restaurant');
+  });
+
+  function demoGreet(bot) {
+    if (demoState[bot].greeted) return;
+    demoState[bot].greeted = true;
+    demoPushBubble(bot, 'bot', GREETINGS[bot]);
+  }
+
+  function demoPushBubble(bot, role, text) {
+    const list = document.getElementById(bot + 'Msgs');
+    const div  = document.createElement('div');
+    div.className = 'demo-bubble ' + role;
+    div.textContent = text;
+    list.appendChild(div);
+    list.scrollTop = list.scrollHeight;
+  }
+
+  function demoShowTyping(bot) {
+    const list = document.getElementById(bot + 'Msgs');
+    const div  = document.createElement('div');
+    div.className = 'demo-typing';
+    div.id = bot + 'Typing';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    list.appendChild(div);
+    list.scrollTop = list.scrollHeight;
+  }
+
+  function demoRemoveTyping(bot) {
+    const t = document.getElementById(bot + 'Typing');
+    if (t) t.remove();
+  }
+
+  async function demoSend(bot, preset) {
+    const input = document.getElementById(bot + 'Input');
+    const msg   = (preset || input.value).trim();
+    if (!msg || demoState[bot].typing) return;
+
+    input.value = '';
+    document.getElementById(bot + 'Suggestions').innerHTML = '';
+    demoPushBubble(bot, 'user', msg);
+    demoState[bot].messages.push({ role: 'user', content: msg });
+    demoState[bot].typing = true;
+    demoShowTyping(bot);
+
+    try {
+      const res = await fetch(`${DEMO_API}/api/chat/${bot}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message:    msg,
+          messages:   demoState[bot].messages,
+          session_id: demoSessionId
+        })
+      });
+      const data = await res.json();
+      demoRemoveTyping(bot);
+      if (data.reply) {
+        demoState[bot].messages = data.messages || demoState[bot].messages;
+        demoPushBubble(bot, 'bot', data.reply);
+      } else {
+        demoPushBubble(bot, 'bot', 'Sorry, something went wrong. Please try again.');
+      }
+    } catch (_) {
+      demoRemoveTyping(bot);
+      demoPushBubble(bot, 'bot', 'Having trouble connecting — the backend may not be live yet.');
+    }
+
+    demoState[bot].typing = false;
+  }
+
+  // Enter key on demo inputs
+  ['store', 'restaurant'].forEach(bot => {
+    document.getElementById(bot + 'Input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); demoSend(bot); }
+    });
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
