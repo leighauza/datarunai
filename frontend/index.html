@@ -883,28 +883,6 @@ footer {
 
 /* ─── STATS BUTTON ─── */
 /* Hero visual section */
-.hero-visual-section {
-  padding: 0 60px 0;
-  background: transparent;
-}
-.hero-visual-wrap {
-  max-width: 680px;
-  margin: 0 auto;
-  transform: translateY(-32px);
-}
-.hero-visual-wrap .hero-card {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(37,99,235,.13), 0 4px 16px rgba(0,0,0,.06);
-  padding: 28px;
-  border: 1px solid rgba(219,234,254,.8);
-}
-.hero-visual-wrap .chat-preview {
-  grid-column: unset;
-  border-top: none;
-  padding-top: 0;
-  margin-top: 0;
-}
 
 /* Stats section */
 .stats-section {
@@ -1533,7 +1511,7 @@ select {
 ══════════════════════════════════════════ -->
 <div id="page-home" class="view">
 
-  <!-- HERO: text + CTAs -->
+  <!-- HERO -->
   <section style="padding:0;">
     <div class="hero">
       <div class="hero-badge anim-1">
@@ -1546,46 +1524,42 @@ select {
         <a onclick="showPage('demo')" class="btn btn-live">See It in Action →</a>
         <a onclick="showPage('contact')" class="btn btn-outline">Book a Free Call</a>
       </div>
-    </div>
-  </section>
-
-  <!-- HERO VISUAL + STATS -->
-  <section class="hero-visual-section">
-    <div class="hero-visual-wrap">
-      <div class="hero-card">
-        <div class="hero-card-inner">
-          <div class="metric-box">
-            <div class="metric-label">Sales recovered</div>
-            <div class="metric-value">₱100k+</div>
-            <div class="metric-sub">↑ from missed chats</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-label">Response time</div>
-            <div class="metric-value">&lt; 3s</div>
-            <div class="metric-sub">↑ faster than 95% of businesses</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-label">Hours saved</div>
-            <div class="metric-value">20+</div>
-            <div class="metric-sub">↑ hrs/week, no manual replies</div>
-          </div>
-          <div class="chat-preview">
-            <div class="chat-header">
-              <div class="chat-avatar">🤖</div>
-              <div>
-                <div class="chat-name">Kain Na Assistant</div>
-                <div class="chat-status">● Always online</div>
-              </div>
+      <div class="hero-visual anim-5">
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="metric-box">
+              <div class="metric-label">Sales recovered</div>
+              <div class="metric-value">₱100k+</div>
+              <div class="metric-sub">↑ from missed chats</div>
             </div>
-            <div class="chat-bubble bubble-user">May available pa ba kayo ngayon? 2 pax lang kami</div>
-            <div class="chat-bubble bubble-bot">Meron pa po! Available kami hanggang 10pm. Gusto niyo bang mag-reserve? Just send your name and time. 😊</div>
-            <div class="chat-bubble bubble-user">Sige! 8pm, Santos</div>
-            <div class="chat-bubble bubble-bot">Confirmed po! Reservation para kay Santos, 2 pax, 8pm tonight. See you! 🍽️</div>
+            <div class="metric-box">
+              <div class="metric-label">Response time</div>
+              <div class="metric-value">&lt; 3s</div>
+              <div class="metric-sub">↑ faster than 95% of businesses</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Hours saved</div>
+              <div class="metric-value">20+</div>
+              <div class="metric-sub">↑ hrs/week, no manual replies</div>
+            </div>
+            <div class="chat-preview">
+              <div class="chat-header">
+                <div class="chat-avatar">🤖</div>
+                <div>
+                  <div class="chat-name">Kain Na Assistant</div>
+                  <div class="chat-status">● Always online</div>
+                </div>
+              </div>
+              <div class="chat-bubble bubble-user">May available pa ba kayo ngayon? 2 pax lang kami</div>
+              <div class="chat-bubble bubble-bot">Meron pa po! Available kami hanggang 10pm. Gusto niyo bang mag-reserve? Just send your name and time. 😊</div>
+              <div class="chat-bubble bubble-user">Sige! 8pm, Santos</div>
+              <div class="chat-bubble bubble-bot">Confirmed po! Reservation para kay Santos, 2 pax, 8pm tonight. See you! 🍽️</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="stats-btn-wrap">
-        <p class="stats-btn-desc">Every missed message is a missed sale. See how much your business could be losing — and how much an AI bot could recover.</p>
+      <div class="stats-btn-wrap anim-5">
+        <p class="stats-btn-desc">Every missed message is a missed sale. See how much your business is losing — and how much you could recover.</p>
         <a onclick="showPage('products')" class="btn-stats">See Your Business Stats →</a>
       </div>
     </div>
