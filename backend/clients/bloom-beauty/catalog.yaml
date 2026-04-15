@@ -1,0 +1,161 @@
+# ─────────────────────────────────────────────────────────────
+# BLOOM BEAUTY PH — Product Catalog (Layer 3)
+# What this file is: every product, price, variant, and promo.
+# Update freely when prices change, new products launch,
+# or items are discontinued. No developer needed.
+# ─────────────────────────────────────────────────────────────
+
+skin_type_guide:
+  oily:
+    - Bloom Balancing Toner
+    - Bloom Niacinamide Serum
+    - Bloom SPF 50 Sunscreen
+    - Bloom Daily Moisturizer
+  dry:
+    - Bloom Vitamin C Serum
+    - Bloom Daily Moisturizer
+    - Bloom Gentle Cleanser
+  combination:
+    - Bloom Niacinamide Serum
+    - Bloom Balancing Toner
+    - Bloom Daily Moisturizer
+  sensitive:
+    - Bloom Gentle Cleanser
+    - Bloom Daily Moisturizer
+  dark_spots:
+    - Bloom Vitamin C Serum
+    - Bloom Niacinamide Serum
+  anti_aging:
+    - Bloom Vitamin C Serum
+    - Bloom Daily Moisturizer
+    - Bloom SPF 50 Sunscreen
+
+categories:
+  skincare:
+    - name: "Bloom Gentle Cleanser"
+      price: 350
+      active: true
+      bestseller: false
+      description: "Sulfate-free foam cleanser. Good for all skin types, especially sensitive and acne-prone."
+      variants: null
+      tags:
+        - all skin types
+        - sensitive
+        - acne-prone
+
+    - name: "Bloom Balancing Toner"
+      price: 420
+      active: true
+      bestseller: false
+      description: "Alcohol-free. Niacinamide + witch hazel. Minimizes pores, controls oil."
+      variants: null
+      tags:
+        - oily
+        - combination
+        - pores
+
+    - name: "Bloom Vitamin C Serum"
+      price: 680
+      active: true
+      bestseller: true
+      description: "10% Vitamin C + Ferulic Acid. Brightens skin, fades dark spots. Best for mornings."
+      variants: null
+      tags:
+        - dark spots
+        - brightening
+        - anti-aging
+
+    - name: "Bloom Niacinamide Serum"
+      price: 620
+      active: true
+      bestseller: true
+      description: "10% Niacinamide. Controls oil, reduces pores, evens skin tone. Great for oily and combination skin."
+      variants: null
+      tags:
+        - oily
+        - combination
+        - pores
+        - uneven tone
+
+    - name: "Bloom Daily Moisturizer"
+      price: 480
+      active: true
+      bestseller: false
+      description: "Lightweight, non-greasy. Hyaluronic acid + ceramides. Works for all skin types."
+      variants: null
+      tags:
+        - all skin types
+        - hydration
+
+    - name: "Bloom SPF 50 Sunscreen"
+      price: 550
+      active: true
+      bestseller: false
+      description: "Matte finish. No white cast. PA++++. Wearable under makeup."
+      variants: null
+      tags:
+        - sun protection
+        - daily use
+        - oily
+
+  makeup:
+    - name: "Bloom Tinted Lip Balm"
+      price: 280
+      active: true
+      bestseller: true
+      description: "Hydrating + color in one. Buildable tint. Great for daily wear."
+      variants:
+        - Rosé
+        - Peachy
+        - Mauve
+        - Berry
+        - Nude
+        - Red
+      tags:
+        - lips
+        - everyday
+        - hydrating
+
+    - name: "Bloom Cushion Foundation"
+      price: 890
+      active: true
+      bestseller: false
+      description: "Medium-full coverage. Dewy finish. SPF 30. Sweat-resistant — great for the PH heat."
+      variants:
+        - Porcelain
+        - Natural
+        - Honey
+        - Caramel
+      tags:
+        - foundation
+        - coverage
+        - sweat-resistant
+
+    - name: "Bloom Brow Pencil"
+      price: 320
+      active: true
+      bestseller: false
+      description: "Micro-precision tip. Waterproof. Lasts all day even in humidity."
+      variants:
+        - Ash Brown
+        - Dark Brown
+        - Black
+      tags:
+        - brows
+        - waterproof
+
+# ── ACTIVE PROMOS ─────────────────────────────────────────────
+# Add, remove, or update promos here as they change.
+# Set active: false to deactivate without deleting.
+promos:
+  - name: "Free Shipping Promo"
+    description: "Free shipping on all orders ₱1,000 and above."
+    active: true
+
+  - name: "Skincare Starter Bundle"
+    description: "Get the Gentle Cleanser + Daily Moisturizer + Balancing Toner for only ₱1,100 (save ₱150)."
+    active: false
+
+  - name: "Serum Duo Deal"
+    description: "Buy the Vitamin C Serum + Niacinamide Serum together for ₱1,200 (save ₱100)."
+    active: false
