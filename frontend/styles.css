@@ -2077,6 +2077,30 @@ select {
   letter-spacing: .05em;
   text-transform: uppercase;
 }
+.portfolio-problem {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-style: italic;
+  max-width: 520px;
+  margin: 0 auto 24px;
+}
+.portfolio-result {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.portfolio-result span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cyan);
+  background: rgba(6,182,212,0.08);
+  border: 1px solid rgba(6,182,212,0.2);
+  padding: 4px 12px;
+  border-radius: 99px;
+  letter-spacing: .02em;
+}
 .portfolio-nav {
   display: flex;
   align-items: center;
