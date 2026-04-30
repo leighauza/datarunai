@@ -185,20 +185,20 @@
     document.getElementById('proof-' + name).classList.add('active');
     if (name === 'operations') triggerProofAnimation();
     if (name === 'finance') {
-      countUp('fin-val-0', 1200000, '₱', '', 1200);
-      countUp('fin-val-1', 68, '', '%', 1200);
-      countUp('fin-val-2', 43000, '₱', '', 1200);
+      countUp('fin-val-0', 284000, '₱', '', 1200);
+      countUp('fin-val-1', 71,     '',  '%', 1200);
+      countUp('fin-val-2', 84000,  '₱', '', 1200);
     }
     if (name === 'marketing') {
-      countUp('mkt-val-0', 3240, '', '', 1200);
-      countUp('mkt-val-1', 12.4, '', '%', 1200);
-      countUp('mkt-val-2', 74, '', '%', 1200);
+      countUp('mkt-val-0', 1847, '',  '',  1200);
+      countUp('mkt-val-1', 380,  '₱', '', 1200);
+      countUp('mkt-val-2', 34,   '',  '%', 1200);
     }
   }
 
   // ── Portfolio Carousel ────────────────────────────────────
   let currentProject = 0;
-  const totalProjects = 3;
+  const totalProjects = 5;
   function showProject(index) {
     document.querySelectorAll('.portfolio-slide').forEach((s, i) => s.classList.toggle('active', i === index));
     document.querySelectorAll('.portfolio-dot').forEach((d, i) => d.classList.toggle('active', i === index));
@@ -206,6 +206,18 @@
   }
   function prevProject() { showProject((currentProject - 1 + totalProjects) % totalProjects); }
   function nextProject() { showProject((currentProject + 1) % totalProjects); }
+
+  // Touch swipe support
+  (function() {
+    const el = document.getElementById('portfolio-slides');
+    if (!el) return;
+    let startX = 0;
+    el.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) diff > 0 ? nextProject() : prevProject();
+    }, { passive: true });
+  })();
 
   function triggerProofAnimation() {
     // Animate SVG lines and dots
