@@ -1,35 +1,8 @@
-  function showPage(id) {
-    // Hide all views
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    // Show target
-    document.getElementById('page-' + id).classList.add('active');
-    // Update nav active state
-    document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
-      a.classList.toggle('active', a.dataset.page === id);
-    });
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Update browser URL without reload
-    history.pushState({ page: id }, '', '#' + id);
-    // Trigger animations when home is shown
-    if (id === 'home') {
-      setTimeout(() => { triggerProofAnimation(); triggerOpsAnimation(); }, 400);
-    }
+  // Auto-trigger homepage animations on load
+  if (document.getElementById('proof-operations')) {
+    setTimeout(() => { triggerProofAnimation(); }, 400);
   }
 
-  // Handle browser back/forward
-  window.addEventListener('popstate', (e) => {
-    const id = e.state?.page || location.hash.replace('#', '') || 'home';
-    showPage(id);
-  });
-
-  // On first load, check URL hash
-  (function init() {
-    const hash = location.hash.replace('#', '');
-    showPage(['home','products','about','contact','demo'].includes(hash) ? hash : 'home');
-  })();
-
-  // Contact form
   // Testimonial carousel
   let currentTestimonial = 0;
   function showTestimonial(index) {
