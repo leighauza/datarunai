@@ -179,15 +179,33 @@
   // ── Hero Proof Section (Tabbed Data) ──────────────────────
 
   function switchProofTab(name, btn) {
-    // Update tab buttons
-    document.querySelectorAll('.hero-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.hero-tab-btn, .hero-tab-text').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    // Update content panes
     document.querySelectorAll('.hero-content').forEach(p => p.classList.remove('active'));
     document.getElementById('proof-' + name).classList.add('active');
-    // Trigger animation if operations
     if (name === 'operations') triggerProofAnimation();
+    if (name === 'finance') {
+      countUp('fin-val-0', 1200000, '₱', '', 1200);
+      countUp('fin-val-1', 68, '', '%', 1200);
+      countUp('fin-val-2', 43000, '₱', '', 1200);
+    }
+    if (name === 'marketing') {
+      countUp('mkt-val-0', 3240, '', '', 1200);
+      countUp('mkt-val-1', 12.4, '', '%', 1200);
+      countUp('mkt-val-2', 74, '', '%', 1200);
+    }
   }
+
+  // ── Portfolio Carousel ────────────────────────────────────
+  let currentProject = 0;
+  const totalProjects = 3;
+  function showProject(index) {
+    document.querySelectorAll('.portfolio-slide').forEach((s, i) => s.classList.toggle('active', i === index));
+    document.querySelectorAll('.portfolio-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+    currentProject = index;
+  }
+  function prevProject() { showProject((currentProject - 1 + totalProjects) % totalProjects); }
+  function nextProject() { showProject((currentProject + 1) % totalProjects); }
 
   function triggerProofAnimation() {
     // Animate SVG lines and dots

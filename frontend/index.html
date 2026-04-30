@@ -39,13 +39,12 @@
     <p class="hero-sub anim-3">Surface the insights from your business — and make faster, clearer calls with all the data on your side.</p>
     <div class="hero-actions anim-4">
       <a href="contact.html" class="btn btn-live">Get Started →</a>
-      <a href="services.html" class="btn btn-outline">Learn About Services</a>
     </div>
     <!-- Proof Section Tabs -->
     <div class="hero-tabs">
-      <button class="hero-tab-btn active" onclick="switchProofTab('operations', this)">Operations</button>
-      <button class="hero-tab-btn" onclick="switchProofTab('finance', this)">Finance</button>
-      <button class="hero-tab-btn" onclick="switchProofTab('marketing', this)">Marketing</button>
+      <button class="hero-tab-text active" onclick="switchProofTab('operations', this)">Operations</button>
+      <button class="hero-tab-text" onclick="switchProofTab('finance', this)">Finance</button>
+      <button class="hero-tab-text" onclick="switchProofTab('marketing', this)">Marketing</button>
     </div>
 
     <div class="hero-visual anim-5">
@@ -87,17 +86,67 @@
 
           <!-- FINANCE VIEW -->
           <div class="hero-content" id="proof-finance">
-            <div class="hero-empty">
-              <div class="hero-empty-icon">🔒</div>
-              <div class="hero-empty-text">Finance view coming soon</div>
+            <div class="hero-metrics">
+              <div class="hero-metric-item">
+                <div class="hero-metric-category">Cash Flow</div>
+                <div class="hero-metric-line">
+                  <div class="hero-metric-header" id="fin-val-0">₱1.2M</div>
+                  <div class="hero-metric-title">Monthly Revenue</div>
+                </div>
+                <div class="hero-metric-support">+18% vs last month</div>
+              </div>
+              <div class="hero-metric-item">
+                <div class="hero-metric-category">Expenses</div>
+                <div class="hero-metric-line">
+                  <div class="hero-metric-header" id="fin-val-1">68%</div>
+                  <div class="hero-metric-title">Gross Margin</div>
+                </div>
+                <div class="hero-metric-support">Up from 61% last quarter</div>
+              </div>
+              <div class="hero-metric-item">
+                <div class="hero-metric-category">Payables</div>
+                <div class="hero-metric-line">
+                  <div class="hero-metric-header" id="fin-val-2">₱43,000</div>
+                  <div class="hero-metric-title">Overdue Invoices</div>
+                </div>
+                <div class="hero-metric-support">3 accounts flagged for follow-up</div>
+              </div>
+            </div>
+            <div class="hero-image-container">
+              <!-- Finance dashboard image placeholder -->
             </div>
           </div>
 
           <!-- MARKETING VIEW -->
           <div class="hero-content" id="proof-marketing">
-            <div class="hero-empty">
-              <div class="hero-empty-icon">🔒</div>
-              <div class="hero-empty-text">Marketing view coming soon</div>
+            <div class="hero-metrics">
+              <div class="hero-metric-item">
+                <div class="hero-metric-category">Acquisition</div>
+                <div class="hero-metric-line">
+                  <div class="hero-metric-header" id="mkt-val-0">3,240</div>
+                  <div class="hero-metric-title">New Leads</div>
+                </div>
+                <div class="hero-metric-support">+31% from last campaign</div>
+              </div>
+              <div class="hero-metric-item">
+                <div class="hero-metric-category">Conversion</div>
+                <div class="hero-metric-line">
+                  <div class="hero-metric-header" id="mkt-val-1">12.4%</div>
+                  <div class="hero-metric-title">Lead to Sale Rate</div>
+                </div>
+                <div class="hero-metric-support">Industry avg: 8.1%</div>
+              </div>
+              <div class="hero-metric-item">
+                <div class="hero-metric-category">Retention</div>
+                <div class="hero-metric-line">
+                  <div class="hero-metric-header" id="mkt-val-2">74%</div>
+                  <div class="hero-metric-title">Repeat Customers</div>
+                </div>
+                <div class="hero-metric-support">Up 9pts from last quarter</div>
+              </div>
+            </div>
+            <div class="hero-image-container">
+              <!-- Marketing dashboard image placeholder -->
             </div>
           </div>
         </div>
@@ -153,7 +202,53 @@
   </div>
 </section>
 
-<!-- HOW WE WORK (Repurposed from "Why Us") -->
+<!-- SELECTED WORK -->
+<section id="selected-work">
+  <div class="inner" style="text-align:center;">
+    <div class="section-eyebrow">Selected Work</div>
+    <div class="section-title">Projects We've Built</div>
+    <div class="section-sub" style="margin:0 auto 40px;">A look at the data infrastructure we've designed and delivered for founders.</div>
+    <div class="portfolio-carousel">
+      <div class="portfolio-slides">
+        <div class="portfolio-slide active">
+          <div class="portfolio-card">
+            <div class="portfolio-tag">Data Audit</div>
+            <div class="portfolio-title">Sample Project 1</div>
+            <div class="portfolio-desc">Audited 4 data sources, cleaned 12,000 records, standardized product catalog for AI readiness.</div>
+            <div class="portfolio-meta">E-commerce · 3 weeks</div>
+          </div>
+        </div>
+        <div class="portfolio-slide">
+          <div class="portfolio-card">
+            <div class="portfolio-tag">Data Lift</div>
+            <div class="portfolio-title">Sample Project 2</div>
+            <div class="portfolio-desc">Built a live revenue dashboard pulling from Shopify, GCash, and Google Sheets. Daily automated refresh.</div>
+            <div class="portfolio-meta">F&B · 2 weeks</div>
+          </div>
+        </div>
+        <div class="portfolio-slide">
+          <div class="portfolio-card">
+            <div class="portfolio-tag">Data Flow</div>
+            <div class="portfolio-title">Sample Project 3</div>
+            <div class="portfolio-desc">Mapped and rebuilt data architecture across 6 systems, enabling reliable AI automation with zero silent failures.</div>
+            <div class="portfolio-meta">Retail · 4 weeks</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-nav">
+        <button class="portfolio-btn" onclick="prevProject()">←</button>
+        <div class="portfolio-dots">
+          <span class="portfolio-dot active" onclick="showProject(0)"></span>
+          <span class="portfolio-dot" onclick="showProject(1)"></span>
+          <span class="portfolio-dot" onclick="showProject(2)"></span>
+        </div>
+        <button class="portfolio-btn" onclick="nextProject()">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
 <section id="how-we-work">
   <div class="inner">
     <div class="section-eyebrow">How We Work</div>
@@ -178,16 +273,6 @@
         <div class="why-body">Comes from understanding your specific needs and simply cleaning things up. Custom, not off-the-shelf.</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- SELECTED WORK (Placeholder - will pull from work.html) -->
-<section id="selected-work">
-  <div class="inner">
-    <div class="section-eyebrow">Selected Work</div>
-    <div class="section-title">Projects We've Built</div>
-    <div class="section-sub">Placeholder for selected case studies and work samples.</div>
-    <!-- Work samples will be added here -->
   </div>
 </section>
 
