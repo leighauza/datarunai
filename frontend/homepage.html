@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DataRunAI — Data Intelligence for Scale-Up Founders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="bg-gradient"></div>
+<div class="page">
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-logo" href="homepage.html">Data<span>Run</span>AI</a>
+  <ul class="nav-links">
+    <li><a href="homepage.html" data-page="homepage">Home</a></li>
+    <li><a href="services.html" data-page="services">Services</a></li>
+    <li><a href="work.html" data-page="work">Work</a></li>
+    <li><a href="contact.html" data-page="contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HOMEPAGE
+══════════════════════════════════════════ -->
+
+<!-- HERO -->
+<section style="padding:0;">
+  <div class="hero">
+    <div class="hero-badge anim-1">
+      <span class="badge-dot"></span>
+      Data intelligence for scale-up founders
+    </div>
+    <h1 class="anim-2">No more running <span class="highlight">blind.</span></h1>
+    <p class="hero-sub anim-3">Surface the insights from your business — and make faster, clearer calls with all the data on your side.</p>
+    <div class="hero-actions anim-4">
+      <a href="contact.html" class="btn btn-live">Get Started →</a>
+      <a href="services.html" class="btn btn-outline">Learn About Services</a>
+    </div>
+    <!-- Proof Section Tabs -->
+    <div class="hero-tabs">
+      <button class="hero-tab-btn active" onclick="switchProofTab('operations', this)">Operations</button>
+      <button class="hero-tab-btn" onclick="switchProofTab('finance', this)">Finance</button>
+      <button class="hero-tab-btn" onclick="switchProofTab('marketing', this)">Marketing</button>
+    </div>
+
+    <div class="hero-visual anim-5">
+      <div class="hero-card">
+        <div class="hero-card-inner" id="hero-card-inner">
+
+          <!-- OPERATIONS VIEW -->
+          <div class="hero-content active" id="proof-operations">
+            <div class="hero-metrics">
+              <div class="hero-metric-item">
+                <div class="hero-metric-category">Analytics</div>
+                <div class="hero-metric-line">
+                  <div class="hero-metric-header" id="proof-val-0">₱284,000</div>
+                  <div class="hero-metric-title">Revenue Tracked</div>
+                </div>
+                <div class="hero-metric-support">+23% vs last week</div>
+              </div>
+              <div class="hero-metric-item">
+                <div class="hero-metric-category">Inventory</div>
+                <div class="hero-metric-line">
+                  <div class="hero-metric-header" id="proof-val-1">234</div>
+                  <div class="hero-metric-title">Units Sold</div>
+                </div>
+                <div class="hero-metric-support">99.5% Inventory Availability</div>
+              </div>
+              <div class="hero-metric-item">
+                <div class="hero-metric-category">Operations</div>
+                <div class="hero-metric-line">
+                  <div class="hero-metric-header" id="proof-val-2">847</div>
+                  <div class="hero-metric-title">Total Conversations</div>
+                </div>
+                <div class="hero-metric-support">94% handled without escalation</div>
+              </div>
+            </div>
+            <div class="hero-image-container">
+              <!-- Image placeholder — user adds image later -->
+            </div>
+          </div>
+
+          <!-- FINANCE VIEW -->
+          <div class="hero-content" id="proof-finance">
+            <div class="hero-empty">
+              <div class="hero-empty-icon">🔒</div>
+              <div class="hero-empty-text">Finance view coming soon</div>
+            </div>
+          </div>
+
+          <!-- MARKETING VIEW -->
+          <div class="hero-content" id="proof-marketing">
+            <div class="hero-empty">
+              <div class="hero-empty-icon">🔒</div>
+              <div class="hero-empty-text">Marketing view coming soon</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI READINESS BANNER -->
+<section class="readiness-section">
+  <div class="readiness-inner">
+    <h2 class="readiness-title">Is your business <span class="highlight">AI-ready?</span></h2>
+    <p class="readiness-sub">Take a free assessment</p>
+    <a href="contact.html" class="btn btn-live">Find out →</a>
+  </div>
+</section>
+
+<!-- SERVICES SECTION (Placeholder - will be filled later) -->
+<section id="services">
+  <div class="inner">
+    <div class="section-eyebrow">Services</div>
+    <div class="section-title">Data Services</div>
+    <div class="section-sub">Placeholder content for services section. To be developed.</div>
+    <!-- Services cards will be added here -->
+  </div>
+</section>
+
+<!-- HOW WE WORK (Repurposed from "Why Us") -->
+<section id="how-we-work">
+  <div class="inner">
+    <div class="section-eyebrow">How We Work</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:56px;">
+      <div><div class="section-title">Built to understand your business.</div></div>
+      <div class="section-sub" style="margin-bottom:0;">We don't apply generic solutions. We audit your data, build custom solutions, and ensure everything is designed for your specific needs and flexibility.</div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">✓</div>
+        <div class="why-title">Clarity</div>
+        <div class="why-body">Everything is super clear — from deadlines to deliverables. You know exactly what you're getting and when.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🚀</div>
+        <div class="why-title">Empower</div>
+        <div class="why-body">Designed for you to have the flexibility to run it on your own with minimal reliance on us. You stay in control.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div class="why-title">Built on Your Business</div>
+        <div class="why-body">Comes from understanding your specific needs and simply cleaning things up. Custom, not off-the-shelf.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK (Placeholder - will pull from work.html) -->
+<section id="selected-work">
+  <div class="inner">
+    <div class="section-eyebrow">Selected Work</div>
+    <div class="section-title">Projects We've Built</div>
+    <div class="section-sub">Placeholder for selected case studies and work samples.</div>
+    <!-- Work samples will be added here -->
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-card">
+    <div class="cta-title">Ready to get clear insights?</div>
+    <div class="cta-sub">Book a free consultation. We'll audit your data, show you what's possible, and give you a clear plan — no pressure.</div>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-white">Book a Free Call →</a>
+      <a href="mailto:hello@datarunai.com" class="btn btn-ghost-white">Email Us Instead</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="footer-logo" href="homepage.html">Data<span>Run</span>AI</a>
+    <ul class="footer-links">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-contact">
+      <a href="mailto:hello@datarunai.com">hello@datarunai.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 DataRunAI. All rights reserved.</p>
+  </div>
+</footer>
+
+</div><!-- /page -->
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — DataRunAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="bg-gradient"></div>
+<div class="page">
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-logo" href="homepage.html">Data<span>Run</span>AI</a>
+  <ul class="nav-links">
+    <li><a href="homepage.html" data-page="homepage">Home</a></li>
+    <li><a href="services.html" data-page="services">Services</a></li>
+    <li><a href="work.html" data-page="work">Work</a></li>
+    <li><a href="contact.html" data-page="contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+
+<section style="padding:0;">
+  <div class="page-hero">
+    <div class="hero-badge anim-1">Let's talk</div>
+    <h1 class="anim-2">Get clear on your <span class="highlight">data.</span></h1>
+    <p class="anim-3">No pressure, no pitch. Just a conversation to understand your business and show you what's possible.</p>
+  </div>
+</section>
+
+<section style="padding:20px 60px 100px;">
+  <div class="inner">
+    <div class="contact-grid">
+
+      <!-- Left -->
+      <div>
+        <div class="info-block">
+          <div class="info-eyebrow">What to expect</div>
+          <ul class="expect-list">
+            <li><div class="expect-icon">💬</div><span>We'll ask about your business — your operations, what data you're sitting on, and where the gaps are.</span></li>
+            <li><div class="expect-icon">🎯</div><span>We'll outline which services fit your situation and what the timeline looks like.</span></li>
+            <li><div class="expect-icon">✅</div><span>You'll leave knowing exactly what we can build and what it costs — no surprises.</span></li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-eyebrow">Who this is for</div>
+          <ul class="who-for-list">
+            <li>Scale-up founders drowning in data</li>
+            <li>Business owners who know they need better insights</li>
+            <li>Anyone frustrated with broken automations and data silos</li>
+            <li>Founders looking to build on a solid data foundation</li>
+          </ul>
+        </div>
+        <div class="direct-contact">
+          <div class="direct-label">Or reach us directly</div>
+          <div class="contact-method">
+            <div class="contact-method-icon">✉️</div>
+            <div>
+              <div class="contact-method-type">Email</div>
+              <div class="contact-method-value"><a href="mailto:hello@datarunai.com">hello@datarunai.com</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">📘</div>
+            <div>
+              <div class="contact-method-type">Facebook</div>
+              <div class="contact-method-value"><a href="https://facebook.com/datarunai" target="_blank">facebook.com/datarunai</a></div>
+            </div>
+          </div>
+          <div class="reply-note">We reply within 24 hours on business days.</div>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div class="booking-header-label">Free Consultation</div>
+          <div class="booking-header-title">Book a time that works for you</div>
+          <div class="booking-header-sub">Pick a slot and we'll confirm within a few hours.</div>
+        </div>
+        <div class="booking-card-body">
+          <div class="calendly-placeholder">
+            <div class="calendly-icon">📅</div>
+            <div class="calendly-title">Schedule your free call</div>
+            <p class="calendly-sub">Click below to pick a date and time. No signup required.</p>
+            <a href="https://calendly.com" target="_blank" class="btn-calendly">Book a Free Call →</a>
+          </div>
+          <div class="booking-divider">or send us a message</div>
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" placeholder="Maria Santos" required>
+              </div>
+              <div class="form-group">
+                <label for="business">Business name</label>
+                <input type="text" id="business" name="business" placeholder="Your Company">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" placeholder="maria@yourcompany.com" required>
+            </div>
+            <div class="form-group">
+              <label for="interest">What service interests you?</label>
+              <select id="interest" name="interest">
+                <option value="" disabled selected>Choose a service...</option>
+                <option value="data-audit">Data Audit — Clean my data</option>
+                <option value="data-lift">Data Lift — Build dashboards</option>
+                <option value="data-flow">Data Flow — Fix my automations</option>
+                <option value="multiple">Multiple / Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell us about your business <span style="color:var(--ink-soft);font-weight:400;">(optional)</span></label>
+              <textarea id="message" name="message" rows="3" placeholder="What's your biggest data challenge right now?"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send Message →</button>
+            <p class="form-note">We'll reply within 24 hours. No spam, no pitch — just a real conversation.</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="footer-logo" href="homepage.html">Data<span>Run</span>AI</a>
+    <ul class="footer-links">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-contact">
+      <a href="mailto:hello@datarunai.com">hello@datarunai.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 DataRunAI. All rights reserved.</p>
+  </div>
+</footer>
+
+</div><!-- /page -->
+
+<script src="script.js"></script>
+</body>
+</html>
