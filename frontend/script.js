@@ -59,7 +59,8 @@
   };
   let demoSessionId = null;
 
-  document.getElementById('gatewayForm').addEventListener('submit', async function(e) {
+  const gatewayForm = document.getElementById('gatewayForm');
+  if (gatewayForm) gatewayForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     const name     = document.getElementById('gwName').value.trim();
     const industry = document.getElementById('gwIndustry').value;
@@ -160,9 +161,10 @@
     demoState[bot].typing = false;
   }
 
-  // Enter key on demo inputs
+  // Enter key on demo inputs (only on demo page)
   ['store', 'restaurant'].forEach(bot => {
-    document.getElementById(bot + 'Input').addEventListener('keydown', e => {
+    const input = document.getElementById(bot + 'Input');
+    if (input) input.addEventListener('keydown', e => {
       if (e.key === 'Enter') { e.preventDefault(); demoSend(bot); }
     });
   });
@@ -279,7 +281,3 @@
     countUp('ops-val-1', 234,    '',  '', 1200);
     countUp('ops-val-2', 284000, '₱', '', 1200);
   }
-
-</script>
-
-</body>
