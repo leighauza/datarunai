@@ -1676,6 +1676,116 @@ select {
 .ops-empty-sub { font-size: 13px; color: var(--text-dim); }
 
 /* ══════════════════════════════════════════
+   HERO PROOF SECTION (Tabbed Data Views)
+══════════════════════════════════════════ */
+.hero-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 5px;
+  width: fit-content;
+  margin: 0 auto 40px;
+}
+.hero-tab-btn {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 22px;
+  border-radius: 99px;
+  border: none;
+  background: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all .2s;
+  letter-spacing: .01em;
+}
+.hero-tab-btn:hover { color: var(--text-muted); }
+.hero-tab-btn.active {
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  color: #fff;
+  box-shadow: var(--glow-purple);
+}
+.hero-card-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.hero-content { display: none; }
+.hero-content.active { display: flex; width: 100%; gap: 40px; align-items: center; }
+.hero-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.hero-metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-metric-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.hero-metric-header {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.hero-metric-support {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.hero-image-container {
+  width: 100%;
+  height: 280px;
+  background: rgba(139,92,246,0.04);
+  border: 1px dashed rgba(139,92,246,0.25);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  font-size: 13px;
+  padding: 20px;
+}
+.hero-image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.hero-empty {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 40px;
+  color: var(--text-dim);
+}
+.hero-empty-icon {
+  font-size: 40px;
+  opacity: 0.5;
+}
+.hero-empty-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ══════════════════════════════════════════
    AI READINESS BANNER
 ══════════════════════════════════════════ */
 .readiness-section {
@@ -1782,36 +1892,55 @@ select {
         <a onclick="showPage('demo')" class="btn btn-live">See It in Action →</a>
         <a onclick="showPage('contact')" class="btn btn-outline">Book a Free Call</a>
       </div>
+      <!-- Proof Section Tabs -->
+      <div class="hero-tabs">
+        <button class="hero-tab-btn active" onclick="switchProofTab('operations', this)">Operations</button>
+        <button class="hero-tab-btn" onclick="switchProofTab('finance', this)">Finance</button>
+        <button class="hero-tab-btn" onclick="switchProofTab('marketing', this)">Marketing</button>
+      </div>
+
       <div class="hero-visual anim-5">
         <div class="hero-card">
-          <div class="hero-card-inner">
-            <div class="metric-box">
-              <div class="metric-label">Sales recovered</div>
-              <div class="metric-value">₱100k+</div>
-              <div class="metric-sub">↑ from missed chats</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">Response time</div>
-              <div class="metric-value">&lt; 3s</div>
-              <div class="metric-sub">↑ faster than 95% of businesses</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">Hours saved</div>
-              <div class="metric-value">20+</div>
-              <div class="metric-sub">↑ hrs/week, no manual replies</div>
-            </div>
-            <div class="chat-preview">
-              <div class="chat-header">
-                <div class="chat-avatar">🤖</div>
-                <div>
-                  <div class="chat-name">Kain Na Assistant</div>
-                  <div class="chat-status">● Always online</div>
+          <div class="hero-card-inner" id="hero-card-inner">
+
+            <!-- OPERATIONS VIEW -->
+            <div class="hero-content active" id="proof-operations">
+              <div class="hero-metrics">
+                <div class="hero-metric-item">
+                  <div class="hero-metric-label">Operations</div>
+                  <div class="hero-metric-header" id="proof-val-0">847</div>
+                  <div class="hero-metric-support">Total Conversations • 94% handled without escalation</div>
+                </div>
+                <div class="hero-metric-item">
+                  <div class="hero-metric-label">Inventory</div>
+                  <div class="hero-metric-header" id="proof-val-1">234</div>
+                  <div class="hero-metric-support">Units Sold • 99.5% Inventory Availability</div>
+                </div>
+                <div class="hero-metric-item">
+                  <div class="hero-metric-label">Analytics</div>
+                  <div class="hero-metric-header" id="proof-val-2">₱284,000</div>
+                  <div class="hero-metric-support">Revenue Tracked • +23% vs last week</div>
                 </div>
               </div>
-              <div class="chat-bubble bubble-user">May available pa ba kayo ngayon? 2 pax lang kami</div>
-              <div class="chat-bubble bubble-bot">Meron pa po! Available kami hanggang 10pm. Gusto niyo bang mag-reserve? Just send your name and time. 😊</div>
-              <div class="chat-bubble bubble-user">Sige! 8pm, Santos</div>
-              <div class="chat-bubble bubble-bot">Confirmed po! Reservation para kay Santos, 2 pax, 8pm tonight. See you! 🍽️</div>
+              <div class="hero-image-container">
+                <!-- Image placeholder — user adds image later -->
+              </div>
+            </div>
+
+            <!-- FINANCE VIEW -->
+            <div class="hero-content" id="proof-finance">
+              <div class="hero-empty">
+                <div class="hero-empty-icon">🔒</div>
+                <div class="hero-empty-text">Finance view coming soon</div>
+              </div>
+            </div>
+
+            <!-- MARKETING VIEW -->
+            <div class="hero-content" id="proof-marketing">
+              <div class="hero-empty">
+                <div class="hero-empty-icon">🔒</div>
+                <div class="hero-empty-text">Marketing view coming soon</div>
+              </div>
             </div>
           </div>
         </div>
@@ -2826,8 +2955,10 @@ select {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // Update browser URL without reload
     history.pushState({ page: id }, '', '#' + id);
-    // Trigger ops animation when home is shown
-    if (id === 'home') { setTimeout(triggerOpsAnimation, 400); }
+    // Trigger animations when home is shown
+    if (id === 'home') {
+      setTimeout(() => { triggerProofAnimation(); triggerOpsAnimation(); }, 400);
+    }
   }
 
   // Handle browser back/forward
@@ -2987,6 +3118,25 @@ select {
     btn.style.background = '#16a34a';
     btn.style.boxShadow = '0 4px 20px rgba(22,163,74,0.3)';
     btn.disabled = true;
+  }
+
+  // ── Hero Proof Section (Tabbed Data) ──────────────────────
+
+  function switchProofTab(name, btn) {
+    // Update tab buttons
+    document.querySelectorAll('.hero-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // Update content panes
+    document.querySelectorAll('.hero-content').forEach(p => p.classList.remove('active'));
+    document.getElementById('proof-' + name).classList.add('active');
+    // Trigger animation if operations
+    if (name === 'operations') triggerProofAnimation();
+  }
+
+  function triggerProofAnimation() {
+    countUp('proof-val-0', 847,    '',  '', 1200);
+    countUp('proof-val-1', 234,    '',  '', 1200);
+    countUp('proof-val-2', 284000, '₱', '', 1200);
   }
 
   // ── Operations Visual Section ─────────────────────────────
