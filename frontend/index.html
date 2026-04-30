@@ -1676,6 +1676,47 @@ select {
 .ops-empty-sub { font-size: 13px; color: var(--text-dim); }
 
 /* ══════════════════════════════════════════
+   AI READINESS BANNER
+══════════════════════════════════════════ */
+.readiness-section {
+  padding: 120px 60px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+.readiness-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(139,92,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.readiness-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.readiness-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+.readiness-title .highlight { color: var(--cyan); }
+.readiness-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════ */
 @media (max-width: 900px) {
@@ -1702,6 +1743,7 @@ select {
   .ops-section { padding: 60px 24px; }
   .ops-panel { grid-template-columns: 1fr; gap: 32px; }
   .ops-connector-svg { display: none; }
+  .readiness-section { padding: 80px 24px; }
 }
 </style>
 </head>
@@ -1866,6 +1908,15 @@ select {
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- AI READINESS BANNER -->
+  <section class="readiness-section">
+    <div class="readiness-inner">
+      <h2 class="readiness-title">Is your business <span class="highlight">AI-ready?</span></h2>
+      <p class="readiness-sub">Take a free assessment</p>
+      <a onclick="showPage('assessment')" class="btn btn-live">Find out →</a>
     </div>
   </section>
 
