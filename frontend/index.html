@@ -1712,20 +1712,21 @@ select {
 .hero-card-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
+  gap: 48px;
+  align-items: flex-start;
 }
 .hero-content { display: none; }
-.hero-content.active { display: flex; width: 100%; gap: 40px; align-items: center; }
+.hero-content.active { display: contents; }
 .hero-metrics {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
+  text-align: left;
 }
 .hero-metric-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 .hero-metric-label {
   font-size: 11px;
@@ -1735,21 +1736,21 @@ select {
   color: var(--cyan);
 }
 .hero-metric-header {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 800;
   color: var(--text);
   letter-spacing: -0.03em;
   line-height: 1.1;
 }
 .hero-metric-support {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-muted);
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 .hero-image-container {
   width: 100%;
-  height: 280px;
+  height: 320px;
   background: rgba(139,92,246,0.04);
   border: 1px dashed rgba(139,92,246,0.25);
   border-radius: var(--radius);
@@ -1758,7 +1759,7 @@ select {
   justify-content: center;
   color: var(--text-dim);
   font-size: 13px;
-  padding: 20px;
+  padding: 24px;
 }
 .hero-image-container img {
   max-width: 100%;
@@ -1948,94 +1949,6 @@ select {
       <div class="stats-btn-wrap anim-5">
         <p class="stats-btn-desc">Every missed message is a missed sale. See how much your business is losing — and how much you could recover.</p>
         <a onclick="showPage('products')" class="btn-stats">See Your Business Stats →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- OPERATIONS VISUAL -->
-  <section class="ops-section">
-    <div class="inner">
-      <div class="ops-header">
-        <div class="ops-tabs">
-          <button class="ops-tab-btn active" onclick="switchOpsTab('operations', this)">Operations</button>
-          <button class="ops-tab-btn" onclick="switchOpsTab('finance', this)">Finance</button>
-          <button class="ops-tab-btn" onclick="switchOpsTab('marketing', this)">Marketing</button>
-        </div>
-      </div>
-
-      <div class="ops-content">
-
-        <!-- OPERATIONS PANE -->
-        <div class="ops-pane active" id="ops-pane-operations">
-          <div class="ops-panel">
-
-            <!-- Left: metric cards -->
-            <div class="ops-metrics">
-              <div class="ops-metric-card" id="ops-card-0">
-                <div class="ops-metric-label">Chatbot</div>
-                <div class="ops-metric-header" id="ops-val-0">847</div>
-                <div class="ops-metric-support">Total Conversations</div>
-                <div class="ops-metric-support" style="margin-top:2px;">94% handled without escalation</div>
-              </div>
-              <div class="ops-metric-card" id="ops-card-1">
-                <div class="ops-metric-label">Inventory</div>
-                <div class="ops-metric-header" id="ops-val-1">234</div>
-                <div class="ops-metric-support">Units Sold</div>
-                <div class="ops-metric-support" style="margin-top:2px;">99.5% Inventory Availability</div>
-              </div>
-              <div class="ops-metric-card" id="ops-card-2">
-                <div class="ops-metric-label">Analytics</div>
-                <div class="ops-metric-header" id="ops-val-2">₱284,000</div>
-                <div class="ops-metric-support">Revenue Tracked</div>
-                <div class="ops-metric-support" style="margin-top:2px;">+23% vs last week</div>
-              </div>
-            </div>
-
-            <!-- Right: visual + SVG lines -->
-            <div class="ops-visual">
-              <div class="ops-visual-inner" id="ops-visual-inner">
-                <div class="ops-img-placeholder">
-                  <span>🤖</span>
-                  <div class="ops-placeholder-label">Chatbot Image</div>
-                </div>
-                <div class="ops-img-placeholder">
-                  <span>📦</span>
-                  <div class="ops-placeholder-label">Inventory Image</div>
-                </div>
-
-                <!-- SVG lines — drawn by JS on activation -->
-                <svg class="ops-connector-svg" id="ops-svg" viewBox="0 0 400 300" preserveAspectRatio="none">
-                  <path class="ops-line" id="ops-line-0" d="M0,50 C-60,50 -60,75 -120,75"/>
-                  <path class="ops-line" id="ops-line-1" d="M0,150 C-60,150 -60,150 -120,150"/>
-                  <path class="ops-line" id="ops-line-2" d="M0,250 C-60,250 -60,225 -120,225"/>
-                  <circle class="ops-line-dot" id="ops-dot-0" cx="-120" cy="75"  r="4"/>
-                  <circle class="ops-line-dot" id="ops-dot-1" cx="-120" cy="150" r="4"/>
-                  <circle class="ops-line-dot" id="ops-dot-2" cx="-120" cy="225" r="4"/>
-                </svg>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- FINANCE PANE -->
-        <div class="ops-pane" id="ops-pane-finance">
-          <div class="ops-empty">
-            <div class="ops-empty-icon">🔒</div>
-            <div class="ops-empty-title">Finance view coming soon</div>
-            <div class="ops-empty-sub">Revenue breakdowns, margins, and financial health — in one place.</div>
-          </div>
-        </div>
-
-        <!-- MARKETING PANE -->
-        <div class="ops-pane" id="ops-pane-marketing">
-          <div class="ops-empty">
-            <div class="ops-empty-icon">🔒</div>
-            <div class="ops-empty-title">Marketing view coming soon</div>
-            <div class="ops-empty-sub">Campaign performance, reach, and ROI — tracked automatically.</div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
